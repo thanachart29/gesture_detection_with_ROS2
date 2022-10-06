@@ -1,0 +1,10 @@
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/install/strip.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/install/local.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/install.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/list_install_components.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/rebuild_cache.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/edit_cache.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/test.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/cpp_node_test.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/gesture_detection_uninstall.dir
+/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/CMakeFiles/uninstall.dir

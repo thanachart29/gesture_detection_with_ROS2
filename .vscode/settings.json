@@ -1,0 +1,30 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/lab2_example_ws/install/fra333_lab1/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/lab2_ws/install/scarlet_kinematics_interfaces/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/lab2_ws/install/scarlet_kinematics/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/lab2_ws/install/scarlet_description/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/mytest_lab2/install/fra333_lab2_32/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/learning_ws/build/urdf_tutorial_r2d2",
+        "/home/pumid/Desktop/fra333/learning_ws/install/urdf_tutorial_r2d2/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/FRA333-week3/install/my_first_package/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/fra333_lab1_32/install/lab1_interfaces/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/fra333_lab1_32/install/fra333_lab1_32/lib/python3.8/site-packages",
+        "/opt/ros/foxy/lib/python3.8/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/lab2_example_ws/install/fra333_lab1/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/lab2_ws/install/scarlet_kinematics_interfaces/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/lab2_ws/install/scarlet_kinematics/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/lab2_ws/install/scarlet_description/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/mytest_lab2/install/fra333_lab2_32/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/learning_ws/build/urdf_tutorial_r2d2",
+        "/home/pumid/Desktop/fra333/learning_ws/install/urdf_tutorial_r2d2/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/FRA333-week3/install/my_first_package/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/fra333_lab1_32/install/lab1_interfaces/lib/python3.8/site-packages",
+        "/home/pumid/Desktop/fra333/fra333_lab1_32/install/fra333_lab1_32/lib/python3.8/site-packages",
+        "/opt/ros/foxy/lib/python3.8/site-packages"
+    ]
+}

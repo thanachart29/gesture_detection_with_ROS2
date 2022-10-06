@@ -1,0 +1,1 @@
+/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/scripts/gesture_detection.py

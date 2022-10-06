@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/pumid/Desktop/fra333/lab2_ws/install/scarlet_kinematics_interfaces/include/**",
+        "/home/pumid/Desktop/fra333/FRA333-week3/install/my_first_package/include/**",
+        "/home/pumid/Desktop/fra333/fra333_lab1_32/install/lab1_interfaces/include/**",
+        "/opt/ros/foxy/include/**",
+        "/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

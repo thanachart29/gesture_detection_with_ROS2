@@ -1,0 +1,31 @@
+[0.021s] Invoking command in '/home/pumid/Desktop/athome/athome_ws/build/gesture_detection': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pumid/Desktop/fra333/learning_ws/install/urdf_tutorial_r2d2:/opt/ros/foxy /usr/bin/cmake --build /home/pumid/Desktop/athome/athome_ws/build/gesture_detection -- -j16 -l16
+[0.096s] [100%] Built target cpp_node_test
+[0.107s] Invoked command in '/home/pumid/Desktop/athome/athome_ws/build/gesture_detection' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pumid/Desktop/fra333/learning_ws/install/urdf_tutorial_r2d2:/opt/ros/foxy /usr/bin/cmake --build /home/pumid/Desktop/athome/athome_ws/build/gesture_detection -- -j16 -l16
+[0.161s] Invoking command in '/home/pumid/Desktop/athome/athome_ws/build/gesture_detection': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pumid/Desktop/fra333/learning_ws/install/urdf_tutorial_r2d2:/opt/ros/foxy /usr/bin/cmake --install /home/pumid/Desktop/athome/athome_ws/build/gesture_detection
+[0.175s] -- Install configuration: ""
+[0.175s] -- Execute custom install script
+[0.175s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/environment/pythonpath.sh
+[0.175s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/environment/pythonpath.dsv
+[0.176s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/python3.8/site-packages/gesture_detection/__init__.py
+[0.176s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/python3.8/site-packages/gesture_detection/dummy_module.py
+[0.176s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/dummy_script.py
+[0.176s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/image_publisher.py
+[0.176s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/gesture_detection.py
+[0.177s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/cpp_node_test
+[0.177s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/ament_index/resource_index/package_run_dependencies/gesture_detection
+[0.177s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/ament_index/resource_index/parent_prefix_path/gesture_detection
+[0.177s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/environment/ament_prefix_path.sh
+[0.177s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/environment/ament_prefix_path.dsv
+[0.178s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/environment/path.sh
+[0.178s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/environment/path.dsv
+[0.178s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/local_setup.bash
+[0.178s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/local_setup.sh
+[0.178s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/local_setup.zsh
+[0.179s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/local_setup.dsv
+[0.179s] -- Symlinking: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/package.dsv
+[0.191s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/ament_index/resource_index/packages/gesture_detection
+[0.192s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/cmake/gesture_detectionConfig.cmake
+[0.192s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/cmake/gesture_detectionConfig-version.cmake
+[0.193s] -- Up-to-date symlink: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/package.xml
+[0.219s] Listing '/home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/python3.8/site-packages/gesture_detection'...
+[0.225s] Invoked command in '/home/pumid/Desktop/athome/athome_ws/build/gesture_detection' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pumid/Desktop/fra333/learning_ws/install/urdf_tutorial_r2d2:/opt/ros/foxy /usr/bin/cmake --install /home/pumid/Desktop/athome/athome_ws/build/gesture_detection

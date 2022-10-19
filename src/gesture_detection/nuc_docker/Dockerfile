@@ -55,7 +55,7 @@ RUN echo 'source /usr/app/src/ros2_ws/install/local_setup.bash' >> /root/.bashrc
 RUN /bin/bash -c "source /usr/app/src/ros2_ws/install/local_setup.bash"
 
 FROM nvidia/cuda:11.2.0-cudnn8-devel-ubuntu20.04
-FROM tensorflow/tensorflow:latest-gpu-jupyter
+FROM tensorflow/tensorflow:latest
 
 WORKDIR /usr/app/src
 RUN mkdir -p /usr/app/src/tesnsorflow_test/src

@@ -22,9 +22,6 @@ RUN git clone https://github.com/IntelRealSense/librealsense.git
 
 WORKDIR /usr/app/src/librealsense
 
-#RUN mv /bin/sh /bin/sh_tmp && ln -s /bin/bash /bin/sh
-#RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh
-
 RUN ./scripts/setup_udev_rules.sh
 RUN ./scripts/patch-realsense-ubuntu-lts.sh; exit 0
 RUN mkdir build

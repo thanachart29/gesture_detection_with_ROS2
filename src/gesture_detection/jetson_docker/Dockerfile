@@ -409,14 +409,23 @@ RUN apt install software-properties-common -y && \
 
 RUN apt update && sudo apt install curl gnupg2 lsb-release
 RUN	curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
+RUN mv /bin/sh /bin/sh_tmp && ln -s /bin/bash /bin/sh
 RUN	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-	
-RUN apt update && \
-	apt upgrade -y && \
-	apt install ros-foxy-desktop
+RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh
 
-RUN source /opt/ros/foxy/setup.bash
-##### install ros-realsense
+RUN apt update && \
+ 	apt upgrade -y
+
+RUN	apt install ros-foxy-desktop -y
+
+RUN /bin/bash -c "source /opt/ros/foxy/setup.bash"
+RUN echo 'source /opt/ros/foxy/setup.bash' >> /root/.bashrc
+
+RUN apt install ros-foxy-turtlesim -y
+RUN apt-get update
+RUN apt-get install -qqy x11-apps
+
+#### install ros-realsense
 # WORKDIR /usr/app/src
 
 # RUN apt-get update -y

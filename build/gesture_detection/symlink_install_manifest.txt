@@ -6,6 +6,7 @@
 /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/image_publisher.py
 /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/gesture_detection.py
 /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/cpp_node_test
+/home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/launch/launch.py
 /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/ament_index/resource_index/package_run_dependencies/gesture_detection
 /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/ament_index/resource_index/parent_prefix_path/gesture_detection
 /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/environment/ament_prefix_path.sh

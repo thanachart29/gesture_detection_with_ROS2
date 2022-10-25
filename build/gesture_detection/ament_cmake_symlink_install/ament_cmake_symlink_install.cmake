@@ -325,8 +325,8 @@ ament_cmake_symlink_install_programs("/home/pumid/Desktop/athome/athome_ws/src/g
 # install("TARGETS" "cpp_node_test" "DESTINATION" "lib/gesture_detection")
 include("/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
-# install(DIRECTORY "DESTINATION" "share/gesture_detection")
-ament_cmake_symlink_install_directory("/home/pumid/Desktop/athome/athome_ws/src/gesture_detection" DIRECTORY "DESTINATION" "share/gesture_detection")
+# install(DIRECTORY "launch" "DESTINATION" "share/gesture_detection")
+ament_cmake_symlink_install_directory("/home/pumid/Desktop/athome/athome_ws/src/gesture_detection" DIRECTORY "launch" "DESTINATION" "share/gesture_detection")
 
 # install(FILES "/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/gesture_detection" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/pumid/Desktop/athome/athome_ws/src/gesture_detection" FILES "/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/gesture_detection" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

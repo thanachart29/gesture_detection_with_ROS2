@@ -2,7 +2,7 @@
 
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import Image, PointCloud2
 from cv_bridge import CvBridge
 import cv2 as cv
 import numpy as np
@@ -18,7 +18,8 @@ print(os.getcwd())
 class GestureDetection(Node):
     def __init__(self):
         super().__init__('gesture_detection')
-        self.subscription = self.create_subscription(Image, 'img', self.listener_callback, 10)
+        self.subscription = self.create_subscription(Image, '/camera/color/image_raw', self.listener_callback, 10)
+        self.pointclound = self.create_subscription(PointCloud2, '/camera/depth/color/points', self.pointclound_callback, 10)
         self.br = CvBridge()
         
         self.mp_drawing_styles = mp.solutions.drawing_styles
@@ -136,6 +137,9 @@ class GestureDetection(Node):
 
         return [x, y, x + w, y + h]
 
+
+    def pointclound_callback(self, whaty):
+        pass
 
 def main(args=None):
     rclpy.init(args=args)

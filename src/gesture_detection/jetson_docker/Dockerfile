@@ -217,7 +217,8 @@ FROM ${PYTORCH_IMAGE} as pytorch
 FROM ${TENSORFLOW_IMAGE} as tensorflow
 FROM ${JETPACK_IMAGE} as jetpack
 FROM ${ROS2_IMAGE} as ros2
-FROM ${BASE_IMAGE}
+FROM nvcr.io/nvidia/l4t-jetpack:r35.1.0
+#FROM ${BASE_IMAGE}
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CUDA_HOME="/usr/local/cuda"
@@ -275,71 +276,58 @@ COPY --from=pytorch /usr/local/lib/python3.8/dist-packages/ /usr/local/lib/pytho
 COPY --from=tensorflow /usr/local/lib/python2.7/dist-packages/ /usr/local/lib/python2.7/dist-packages/
 COPY --from=tensorflow /usr/local/lib/python3.8/dist-packages/ /usr/local/lib/python3.8/dist-packages/
 
-# COPY --from=ros2 /opt/ros/${ROS_DISTRO} /opt/ros/${ROS_DISTRO}
-
-# # CUDA and Cudnn and TnensorRT from jetpack
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    sudo \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-# Install nvidia-cuda-dev for CUDA developer packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    nvidia-cuda-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-# Install nvidia-cudnn8-dev for CuDNN developer packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    nvidia-cudnn8-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-# Install nvidia-tensorrt-dev for TensorRT developer packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    nvidia-tensorrt-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-#
-# Install nvidia-vpi-dev for VPI developer packages
-# Use nvidia-vpi if need VPI runtime only
-#
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    nvidia-vpi-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-
-# Install nvidia-opencv-dev for OpenCV developer packages
+##############################################################
+# # # CUDA and Cudnn and TnensorRT from jetpack
 # RUN apt-get update && apt-get install -y --no-install-recommends \
-#     nvidia-opencv-dev \
+#     sudo \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && apt-get clean
+
+# # Install nvidia-cuda-dev for CUDA developer packages
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     nvidia-cuda-dev \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && apt-get clean
+
+# # Install nvidia-cudnn8-dev for CuDNN developer packages
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     nvidia-cudnn8-dev \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && apt-get clean
+
+# # Install nvidia-tensorrt-dev for TensorRT developer packages
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     nvidia-tensorrt-dev \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && apt-get clean
+
+# #
+# # Install nvidia-vpi-dev for VPI developer packages
+# # Use nvidia-vpi if need VPI runtime only
+# #
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     nvidia-vpi-dev \
 #     && rm -rf /var/lib/apt/lists/* \
 #     && apt-get clean
 
 
-# Install Multimedia API samples & libs
-RUN apt-get update && apt-get download nvidia-l4t-jetson-multimedia-api \
-    && dpkg-deb -R ./nvidia-l4t-jetson-multimedia-api_*_arm64.deb ./mm-api \
-    && cp -r ./mm-api/usr/src/jetson_multimedia_api /usr/src/jetson_multimedia_api \
-    && ./mm-api/DEBIAN/postinst \
-    && rm -rf ./nvidia-l4t-jetson-multimedia-api_*_arm64.deb ./mm-api
+# # Install nvidia-opencv-dev for OpenCV developer packages
+# # RUN apt-get update && apt-get install -y --no-install-recommends \
+# #     nvidia-opencv-dev \
+# #     && rm -rf /var/lib/apt/lists/* \
+# #     && apt-get clean
 
-#Update libraries
-RUN ldconfig 
 
-# Setup environment variables
-ENV CUDA_HOME="/usr/local/cuda"
-ENV PATH="/usr/local/cuda/bin:${PATH}"
-ENV LD_LIBRARY_PATH="/usr/local/cuda/lib64:${LD_LIBRARY_PATH}"
+# # Install Multimedia API samples & libs
+# RUN apt-get update && apt-get download nvidia-l4t-jetson-multimedia-api \
+#     && dpkg-deb -R ./nvidia-l4t-jetson-multimedia-api_*_arm64.deb ./mm-api \
+#     && cp -r ./mm-api/usr/src/jetson_multimedia_api /usr/src/jetson_multimedia_api \
+#     && ./mm-api/DEBIAN/postinst \
+#     && rm -rf ./nvidia-l4t-jetson-multimedia-api_*_arm64.deb ./mm-api
 
-# COPY --from=jetpack /usr/local/cuda/ usr/local/cuda/
-# COPY --from=jetpack /usr/local/cuda-11/ usr/local/cuda-11/
-# COPY --from=jetpack /usr/local/cuda-11.4/ usr/local/cuda-11.4/
-
-# COPY --from=jetpack /usr/src/tensorrt/ /usr/src/tensorrt/
-# COPY --from=jetpack /usr/src/cudnn_samples_v8/ /usr/src/cudnn_samples_v8/
-# COPY --from=jetpack /usr/src/jetson_multimedia_api/ /usr/src/jetson_multimedia_api/
+# #Update libraries
+# RUN ldconfig usr/ usr/local/cuda-11.4/
+###########################################################
 
 # python pip packages
 RUN pip3 install --no-cache-dir --ignore-installed pybind11 
@@ -426,47 +414,58 @@ RUN apt-get update
 RUN apt-get install -qqy x11-apps
 
 #### install ros-realsense
-# WORKDIR /usr/app/src
+WORKDIR /usr/app/src
 
-# RUN apt-get update -y
-# RUN apt-get upgrade -y
-# RUN apt autoremove -y
-# RUN apt-get dist-upgrade -y
-# RUN apt install git -y
-# RUN apt-get install git libssl-dev libusb-1.0-0-dev libudev-dev pkg-config libgtk-3-dev -y
-# RUN apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev at -y
-# RUN apt -y install udev
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt autoremove -y
+RUN apt-get dist-upgrade -y
+RUN apt install git -y
+RUN apt-get install git libssl-dev libusb-1.0-0-dev libudev-dev pkg-config libgtk-3-dev -y
+RUN apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev at -y
+RUN apt -y install udev
 
-# RUN git clone https://github.com/IntelRealSense/librealsense.git
+RUN git clone https://github.com/IntelRealSense/librealsense.git
 
-# WORKDIR /usr/app/src/librealsense
+WORKDIR /usr/app/src/librealsense
 
-# RUN ./scripts/setup_udev_rules.sh
-# RUN ./scripts/patch-realsense-ubuntu-lts.sh; exit 0
-# RUN mkdir build
-# WORKDIR /usr/app/src/librealsense/build
-# RUN cmake ../ -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=false
-# RUN make uninstall && make clean && make -j8 && make install
+RUN ./scripts/setup_udev_rules.sh
+RUN ./scripts/patch-realsense-ubuntu-lts.sh; exit 0
+RUN mkdir build
+WORKDIR /usr/app/src/librealsense/build
+RUN cmake ../ -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=false
+RUN make uninstall && make clean && make -j8 && make install
 
 
-# RUN mkdir -p /usr/app/src/ros2_ws/src
-# WORKDIR /usr/app/src/ros2_ws/src/
-# RUN git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-beta
+RUN mkdir -p /usr/app/src/ros2_ws/src
+WORKDIR /usr/app/src/ros2_ws/src/
+RUN git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-beta
 
-# WORKDIR /usr/app/src/ros2_ws/
+WORKDIR /usr/app/src/ros2_ws/
 
-# RUN apt-get install python3-rosdep -y
-# RUN rosdep init; exit 0
-# RUN rosdep update
+RUN apt-get install python3-rosdep -y
+RUN rosdep init; exit 0
+RUN rosdep update
 
-# RUN echo 'source /opt/ros/foxy/install/setup.bash' >> /root/.bashrc
-# RUN /bin/bash -c "source /opt/ros/foxy/install/setup.bash"
-# RUN rosdep install -i --from-path src --rosdistro $ROS_DISTRO --skip-keys=librealsense2 -y
-# RUN mv /bin/sh /bin/sh_tmp && ln -s /bin/bash /bin/sh
-# RUN source /opt/ros/${ROS_DISTRO}/install/setup.bash; colcon build
-# RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh
+RUN echo 'source /opt/ros/foxy/setup.bash' >> /root/.bashrc
+RUN /bin/bash -c "source /opt/ros/foxy/setup.bash"
+RUN rosdep install -i --from-path src --rosdistro $ROS_DISTRO --skip-keys=librealsense2 -y
+RUN mv /bin/sh /bin/sh_tmp && ln -s /bin/bash /bin/sh
+RUN apt install python3-colcon-common-extensions -y
+RUN source /opt/ros/${ROS_DISTRO}/setup.bash; colcon build
+RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh
 
-# RUN echo 'source /usr/app/src/ros2_ws/install/local_setup.bash' >> /root/.bashrc
-# RUN /bin/bash -c "source /usr/app/src/ros2_ws/install/local_setup.bash"
+RUN echo 'source /usr/app/src/ros2_ws/install/local_setup.bash' >> /root/.bashrc
+RUN /bin/bash -c "source /usr/app/src/ros2_ws/install/local_setup.bash"
 
-# COPY test_tensorflow.py ./
+
+ENV PATH="/usr/local/cuda-11.4/bin:/usr/local/cuda-11/bin:${PATH}"
+ENV LD_LIBRARY_PATH="/usr/local/cuda-11.4/lib64:/usr/local/cuda-11/lib64:${LD_LIBRARY_PATH}"
+
+WORKDIR /usr/app/src
+RUN mkdir -p cacao_ws/src
+WORKDIR /usr/app/src/cacao_ws/src
+
+##### additional library
+RUN pip3 install mediapipe -y
+

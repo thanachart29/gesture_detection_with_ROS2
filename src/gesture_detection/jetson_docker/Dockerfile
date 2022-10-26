@@ -467,5 +467,16 @@ RUN mkdir -p cacao_ws/src
 WORKDIR /usr/app/src/cacao_ws/src
 
 ##### additional library
-RUN pip3 install mediapipe -y
+RUN mv /bin/sh /bin/sh_tmp && ln -s /bin/bash /bin/sh
+RUN pip3 install --upgrade pip
+RUN pip3 install mediapipe
+RUN pip3 install opencv_python
+RUN pip3 install tqdm
+RUN pip3 install SpeechRecognition
 
+RUN pip3 install pyttsx3
+RUN apt-get install portaudio19-dev python3-pyaudio -y
+RUN pip3 install pyaudio==0.2.11
+RUN apt-get install swig -y
+RUN pip3 install pocketsphinx==0.1.15
+RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh

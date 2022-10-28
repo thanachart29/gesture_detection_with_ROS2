@@ -3,6 +3,8 @@
 import numpy as np
 import tensorflow as tf
 import os
+print(os.getcwd())
+print(os.path.join(os.getcwd(),'src/gesture_detection/scripts/model/keypoint_classifier/keypoint_classifier.tflite'))
 class KeyPointClassifier(object):
     def __init__(
         self,

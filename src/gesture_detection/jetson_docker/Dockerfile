@@ -462,21 +462,42 @@ RUN /bin/bash -c "source /usr/app/src/ros2_ws/install/local_setup.bash"
 ENV PATH="/usr/local/cuda-11.4/bin:/usr/local/cuda-11/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/usr/local/cuda-11.4/lib64:/usr/local/cuda-11/lib64:${LD_LIBRARY_PATH}"
 
-WORKDIR /usr/app/src
-RUN mkdir -p cacao_ws/src
-WORKDIR /usr/app/src/cacao_ws/src
+##### install opencv
+WORKDIR /usr/app/src/
+RUN apt-get install gcc-arm-linux-gnueabi -y
+RUN apt-get install gcc-arm-linux-gnueabihf -y
+# # RUN git clone https://github.com/opencv/opencv.git
+# # RUN cd opencv/platforms/linux && mkdir -p build_hardfp
+# # WORKDIR /usr/app/src/opencv/platforms/linux/build_hardfp
+# # RUN cmake -DCMAKE_TOOLCHAIN_FILE=../arm-gnueabi.toolchain.cmake ../../..
+# # RUN make
 
 ##### additional library
+RUN apt-get install apt-utils -y
+RUN apt-get update
+RUN apt-get upgrade -y
 RUN mv /bin/sh /bin/sh_tmp && ln -s /bin/bash /bin/sh
 RUN pip3 install --upgrade pip
-RUN pip3 install mediapipe
 RUN pip3 install opencv_python
+RUN pip3 install mediapipe
 RUN pip3 install tqdm
 RUN pip3 install SpeechRecognition
+RUN pip3 install py_trees
 
+RUN wget https://forums.developer.nvidia.com/uploads/short-url/3kLERQgB4ZR0q0wgUdO9qY6lxBq.sh
+RUN chmod +x 3kLERQgB4ZR0q0wgUdO9qY6lxBq.sh
+RUN echo yes | ./3kLERQgB4ZR0q0wgUdO9qY6lxBq.sh
+#### additional library
 RUN pip3 install pyttsx3
 RUN apt-get install portaudio19-dev python3-pyaudio -y
 RUN pip3 install pyaudio==0.2.11
 RUN apt-get install swig -y
 RUN pip3 install pocketsphinx==0.1.15
+RUN apt-get install ros-foxy-cv-bridge -y 
+RUN apt-get install ros-foxy-vision-opencv -y
 RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh
+
+WORKDIR /usr/app/src
+RUN mkdir -p cacao_ws
+WORKDIR /usr/app/src/cacao_ws
+RUN echo 'source /usr/app/src/cacao_ws/install/setup.bash' >> /root/.bashrc

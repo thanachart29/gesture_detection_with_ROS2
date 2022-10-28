@@ -3,8 +3,8 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
-from cv_bridge import CvBridge
 import cv2 as cv 
+from cv_bridge import CvBridge
  
 class ImagePublisher(Node):
     def __init__(self):

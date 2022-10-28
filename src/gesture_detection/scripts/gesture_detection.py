@@ -3,25 +3,43 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image, PointCloud2
-from cv_bridge import CvBridge
 import cv2 as cv
+from cv_bridge import CvBridge
 import numpy as np
 import mediapipe as mp
 from utils import CvFpsCalc
-from collections import deque
+from collections import deque, Counter
 import os
-from model import KeyPointClassifier
+from model.keypoint_classifier.keypoint_classifier import KeyPointClassifier
 import copy
 import itertools
+from std_srvs.srv import Empty as Empty_srv
+from std_msgs.msg import Int8
 print(os.getcwd())
  
 class GestureDetection(Node):
     def __init__(self):
         super().__init__('gesture_detection')
-        self.subscription = self.create_subscription(Image, '/camera/color/image_raw', self.listener_callback, 10)
-        self.pointclound = self.create_subscription(PointCloud2, '/camera/depth/color/points', self.pointclound_callback, 10)
+        self.subscription = self.create_subscription(Image, '/camera/color/image_raw', self.getImgCallback, 10)
+        self.pointclound = self.create_subscription(PointCloud2, '/camera/depth/color/points', self.getPointCloundCallback, 10)
+        self.timer = self.create_timer(0.1, self.timer_callback)
+        ##### first task detect start command #####
+        self.started_publisher = self.create_publisher(Int8,'/detect_start_cmd/detected',10)
+        self.detect_start_cmd_service = self.create_service(Empty_srv,'/detect_start_cmd/enable',self.enable_detect_start_cmd_callback)
+        self.enable_detect_start_cmd = False
+        self.detect_start_cmd_status = Int8()
+        self.detect_start_cmd_status.data = 0
+
+        ##### second task detect pointed command #####
+        self.pointed_publisher = self.create_publisher(Int8,'/detect_pointed/detected',10)
+        self.detect_pointed_service = self.create_service(Empty_srv,'/detect_pointed/enable',self.enable_detect_pointed_callback)
+        self.enable_detect_pointed = False
+        self.detect_pointed_status = Int8()
+        self.detect_pointed_status.data = 0
+
+        ##### CvBridge initial
         self.br = CvBridge()
-        
+        ##### mediapipe initial
         self.mp_drawing_styles = mp.solutions.drawing_styles
         self.mp_drawing = mp.solutions.drawing_utils
         self.mp_hands = mp.solutions.hands
@@ -29,30 +47,51 @@ class GestureDetection(Node):
                                          max_num_hands=1,
                                          min_detection_confidence=0.7,
                                          min_tracking_confidence=0.5,)
-
+        ##### initial model
         self.keypoint_classifier = KeyPointClassifier()
         self.keypoint_classifier_labels = ['Open', 'Close', 'Pointer', 'OK']
-
         self.cvFpsCalc = CvFpsCalc(buffer_len=10)
         self.fps_que = deque(maxlen=16)
+        self.hand_sign_que = deque(maxlen=60)
 
+
+    def timer_callback(self):
+        if self.enable_detect_start_cmd:
+            self.detectGesture()
+            self.started_publisher.publish(self.detect_start_cmd_status)
+        elif self.enable_detect_pointed:
+            self.detectGesture()
+            self.pointed_publisher.publish(self.detect_pointed_status)
+        self.started_publisher.publish(self.detect_start_cmd_status)
+        self.pointed_publisher.publish(self.detect_pointed_status)
         
-    def listener_callback(self, data):
+    def getImgCallback(self, data):
         self.img = self.br.imgmsg_to_cv2(data)
         self.img = cv.resize(self.img, [960, 540])
         self.img = cv.flip(self.img, 1)
         self.cp_img = copy.deepcopy(self.img)
         self.img = cv.cvtColor(self.img, cv.COLOR_BGR2RGB)
 
-        fps = self.cvFpsCalc.get()
-        self.fps_que.append(fps)
-        self.detectGesture()
-        self.get_logger().info('Receiving video frame')
-        cv.putText(self.cp_img, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
-        cv.putText(self.cp_img, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
-        print("FPS: " + str(fps))
-        cv.imshow('Raw Webcam Feed', self.cp_img)
-        cv.waitKey(1)
+        # fps = self.cvFpsCalc.get()
+        # self.fps_que.append(fps)
+        # self.detectGesture()
+        # self.get_logger().info('Receiving video frame')
+        # cv.putText(self.cp_img, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+        # cv.putText(self.cp_img, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+        # print("FPS: " + str(fps))
+        # cv.imshow('Raw Webcam Feed', self.cp_img)
+        # cv.waitKey(1)
+
+    def getPointCloundCallback(self, whaty):
+        pass
+    
+    def enable_detect_start_cmd_callback(self,request,response):
+        self.enable_detect_start_cmd = True
+        return response
+
+    def enable_detect_pointed_callback(self,request,response):
+        self.enable_detect_pointed = True
+        return response
 
     def detectGesture(self):
         self.img.flags.writeable = False
@@ -66,23 +105,33 @@ class GestureDetection(Node):
                 landmark_list = self.calc_landmark_list(hand_landmarks)
                 pre_processed_landmark_list = self.pre_process_landmark(landmark_list)
                 hand_sign_id = self.keypoint_classifier(pre_processed_landmark_list)
+                self.hand_sign_que.append(hand_sign_id)
 
-                ##### disply #####
-                self.mp_drawing.draw_landmarks( self.cp_img, 
-                                                hand_landmarks, 
-                                                self.mp_hands.HAND_CONNECTIONS,
-                                                self.mp_drawing_styles.get_default_hand_landmarks_style(), 
-                                                self.mp_drawing_styles.get_default_hand_connections_style())
+                if (Counter(self.hand_sign_que))[0] == 60:
+                    self.detect_start_cmd_status.data = 1
+                    self.enable_detect_start_cmd = False
+                elif (Counter(self.hand_sign_que))[2] == 60:
+                    self.detect_pointed_status.data = 1
+                    self.enable_detect_pointed = False
+                else:
+                    self.detect_start_cmd_status.data = 0
+                    self.detect_pointed_status.data = 0
+                # ##### disply #####
+                # self.mp_drawing.draw_landmarks( self.cp_img, 
+                #                                 hand_landmarks, 
+                #                                 self.mp_hands.HAND_CONNECTIONS,
+                #                                 self.mp_drawing_styles.get_default_hand_landmarks_style(), 
+                #                                 self.mp_drawing_styles.get_default_hand_connections_style())
 
-                brect = self.calc_bounding_rect(hand_landmarks)
-                cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
-                cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[1] - 22),(0, 0, 0), -1)
-                hand_sign_text = self.keypoint_classifier_labels[hand_sign_id]
-                print("hand_sign_id: " + str(hand_sign_id))
-                info_text = handedness.classification[0].label[0:]
-                if hand_sign_text != "":
-                    info_text = info_text + ':' + hand_sign_text
-                cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+                # brect = self.calc_bounding_rect(hand_landmarks)
+                # cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
+                # cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[1] - 22),(0, 0, 0), -1)
+                # hand_sign_text = self.keypoint_classifier_labels[hand_sign_id]
+                # print("hand_sign_id: " + str(hand_sign_id))
+                # info_text = handedness.classification[0].label[0:]
+                # if hand_sign_text != "":
+                #     info_text = info_text + ':' + hand_sign_text
+                # cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
 
     def calc_landmark_list(self, landmarks):
         image_width, image_height = self.cp_img.shape[1], self.cp_img.shape[0]
@@ -137,9 +186,6 @@ class GestureDetection(Node):
 
         return [x, y, x + w, y + h]
 
-
-    def pointclound_callback(self, whaty):
-        pass
 
 def main(args=None):
     rclpy.init(args=args)

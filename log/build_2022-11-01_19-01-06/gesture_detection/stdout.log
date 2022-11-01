@@ -33,7 +33,7 @@
 -- Looking for pthread_create in pthread
 -- Looking for pthread_create in pthread - found
 -- Found Threads: TRUE  
--- Found rclpy: 1.0.10 (/opt/ros/foxy/share/rclpy/cmake)
+-- Found rclpy: 1.0.11 (/opt/ros/foxy/share/rclpy/cmake)
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/pumid/Desktop/athome/athome_ws/build/gesture_detection
@@ -51,6 +51,7 @@
 -- Symlinking: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/image_publisher.py
 -- Symlinking: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/gesture_detection.py
 -- Symlinking: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/lib/gesture_detection/cpp_node_test
+-- Symlinking: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/launch/launch.py
 -- Symlinking: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/ament_index/resource_index/package_run_dependencies/gesture_detection
 -- Symlinking: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/ament_index/resource_index/parent_prefix_path/gesture_detection
 -- Symlinking: /home/pumid/Desktop/athome/athome_ws/install/gesture_detection/share/gesture_detection/environment/ament_prefix_path.sh

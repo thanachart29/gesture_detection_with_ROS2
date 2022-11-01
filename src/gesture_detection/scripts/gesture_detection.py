@@ -1,5 +1,4 @@
 #!/home/pumid/Desktop/athome/bin/python3
-
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image, PointCloud2
@@ -10,11 +9,15 @@ import mediapipe as mp
 from utils import CvFpsCalc
 from collections import deque, Counter
 import os
-from model.keypoint_classifier.keypoint_classifier import KeyPointClassifier
+print('importing model')
+# from model.keypoint_classifier.keypoint_classifier import KeyPointClassifier
+from model.keypoint_classifier.coral_keypoint_classifier import CoralKeyPointClassifier
+print('Success')
 import copy
 import itertools
 from std_srvs.srv import Empty as Empty_srv
 from std_msgs.msg import Int8
+
 print(os.getcwd())
  
 class GestureDetection(Node):
@@ -26,7 +29,8 @@ class GestureDetection(Node):
         ##### first task detect start command #####
         self.started_publisher = self.create_publisher(Int8,'/detect_start_cmd/detected',10)
         self.detect_start_cmd_service = self.create_service(Empty_srv,'/detect_start_cmd/enable',self.enable_detect_start_cmd_callback)
-        self.enable_detect_start_cmd = False
+        # self.enable_detect_start_cmd = False
+        self.enable_detect_start_cmd = True
         self.detect_start_cmd_status = Int8()
         self.detect_start_cmd_status.data = 0
 
@@ -44,15 +48,16 @@ class GestureDetection(Node):
         self.mp_drawing = mp.solutions.drawing_utils
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands(static_image_mode=False,
-                                         max_num_hands=1,
+                                         max_num_hands=2,
                                          min_detection_confidence=0.7,
                                          min_tracking_confidence=0.5,)
         ##### initial model
-        self.keypoint_classifier = KeyPointClassifier()
+        self.keypoint_classifier = CoralKeyPointClassifier()
         self.keypoint_classifier_labels = ['Open', 'Close', 'Pointer', 'OK']
         self.cvFpsCalc = CvFpsCalc(buffer_len=10)
         self.fps_que = deque(maxlen=16)
         self.hand_sign_que = deque(maxlen=60)
+        self.imgEnable = False
 
 
     def timer_callback(self):
@@ -71,9 +76,12 @@ class GestureDetection(Node):
         self.img = cv.flip(self.img, 1)
         self.cp_img = copy.deepcopy(self.img)
         self.img = cv.cvtColor(self.img, cv.COLOR_BGR2RGB)
+        self.imgEnable = True
+        fps = self.cvFpsCalc.get()
+        self.fps_que.append(fps)
+        print(fps)
+        
 
-        # fps = self.cvFpsCalc.get()
-        # self.fps_que.append(fps)
         # self.detectGesture()
         # self.get_logger().info('Receiving video frame')
         # cv.putText(self.cp_img, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
@@ -82,7 +90,8 @@ class GestureDetection(Node):
         # cv.imshow('Raw Webcam Feed', self.cp_img)
         # cv.waitKey(1)
 
-    def getPointCloundCallback(self, whaty):
+    def getPointCloundCallback(self, point_clound:PointCloud2):
+        a = point_clound.read_points()
         pass
     
     def enable_detect_start_cmd_callback(self,request,response):
@@ -94,44 +103,46 @@ class GestureDetection(Node):
         return response
 
     def detectGesture(self):
-        self.img.flags.writeable = False
-        results = self.hands.process(self.img)
-        self.img.flags.writeable = True
-        if results.multi_hand_landmarks:
-            for hand_landmarks, handedness in zip(results.multi_hand_landmarks, results.multi_handedness):
-                landmark_point = []
-                for _, landmark in enumerate(hand_landmarks.landmark):
-                    landmark_point.append([landmark.x, landmark.y, landmark.z])
-                landmark_list = self.calc_landmark_list(hand_landmarks)
-                pre_processed_landmark_list = self.pre_process_landmark(landmark_list)
-                hand_sign_id = self.keypoint_classifier(pre_processed_landmark_list)
-                self.hand_sign_que.append(hand_sign_id)
-
-                if (Counter(self.hand_sign_que))[0] == 60:
-                    self.detect_start_cmd_status.data = 1
-                    self.enable_detect_start_cmd = False
-                elif (Counter(self.hand_sign_que))[2] == 60:
-                    self.detect_pointed_status.data = 1
-                    self.enable_detect_pointed = False
-                else:
-                    self.detect_start_cmd_status.data = 0
-                    self.detect_pointed_status.data = 0
-                # ##### disply #####
-                # self.mp_drawing.draw_landmarks( self.cp_img, 
-                #                                 hand_landmarks, 
-                #                                 self.mp_hands.HAND_CONNECTIONS,
-                #                                 self.mp_drawing_styles.get_default_hand_landmarks_style(), 
-                #                                 self.mp_drawing_styles.get_default_hand_connections_style())
-
-                # brect = self.calc_bounding_rect(hand_landmarks)
-                # cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
-                # cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[1] - 22),(0, 0, 0), -1)
-                # hand_sign_text = self.keypoint_classifier_labels[hand_sign_id]
-                # print("hand_sign_id: " + str(hand_sign_id))
-                # info_text = handedness.classification[0].label[0:]
-                # if hand_sign_text != "":
-                #     info_text = info_text + ':' + hand_sign_text
-                # cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+        if self.imgEnable:
+            self.img.flags.writeable = False
+            results = self.hands.process(self.img)
+            self.img.flags.writeable = True
+            if results.multi_hand_landmarks:
+                for hand_landmarks, handedness in zip(results.multi_hand_landmarks, results.multi_handedness):
+                    landmark_point = []
+                    for _, landmark in enumerate(hand_landmarks.landmark):
+                        landmark_point.append([landmark.x, landmark.y, landmark.z])
+                    landmark_list = self.calc_landmark_list(hand_landmarks)
+                    pre_processed_landmark_list = self.pre_process_landmark(landmark_list)
+                    hand_sign_id = self.keypoint_classifier(pre_processed_landmark_list)
+                    self.hand_sign_que.append(hand_sign_id)
+                    print(hand_sign_id)
+    
+                    if (Counter(self.hand_sign_que))[0] == 60:
+                        self.detect_start_cmd_status.data = 1
+                        self.enable_detect_start_cmd = False
+                    elif (Counter(self.hand_sign_que))[2] == 60:
+                        self.detect_pointed_status.data = 1
+                        self.enable_detect_pointed = False
+                    else:
+                        self.detect_start_cmd_status.data = 0
+                        self.detect_pointed_status.data = 0
+                    # ##### disply #####
+                    # self.mp_drawing.draw_landmarks( self.cp_img, 
+                    #                                 hand_landmarks, 
+                    #                                 self.mp_hands.HAND_CONNECTIONS,
+                    #                                 self.mp_drawing_styles.get_default_hand_landmarks_style(), 
+                    #                                 self.mp_drawing_styles.get_default_hand_connections_style())
+    
+                    # brect = self.calc_bounding_rect(hand_landmarks)
+                    # cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
+                    # cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[1] - 22),(0, 0, 0), -1)
+                    # hand_sign_text = self.keypoint_classifier_labels[hand_sign_id]
+                    # print("hand_sign_id: " + str(hand_sign_id))
+                    # info_text = handedness.classification[0].label[0:]
+                    # if hand_sign_text != "":
+                    #     info_text = info_text + ':' + hand_sign_text
+                    # cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
 
     def calc_landmark_list(self, landmarks):
         image_width, image_height = self.cp_img.shape[1], self.cp_img.shape[0]

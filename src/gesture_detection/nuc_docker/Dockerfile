@@ -95,6 +95,8 @@ RUN /bin/bash -c "export TURTLEBOT3_MODEL=waffle"
 RUN /bin/bash -c "export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/foxy/share/turtlebot3_gazebo/models"
 ####### exceptfirmware package
 
+
+
 ##### workspace
 RUN mkdir -p /usr/app/src/cacao_ws
 WORKDIR /usr/app/src/cacao_ws

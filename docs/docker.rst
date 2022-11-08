@@ -8,7 +8,6 @@ Both processors do not have the same python environment,
 therefore, Cacao's team is building the docker images for executing software in the same environment as Cacao's processor
 
 |
-|
 
 ----------------------------
 
@@ -78,7 +77,6 @@ requirement package included:
 
 Known limitation: Unfortunately you won’t be able to run any binary that calls into the NVIDIA driver on the x86 host.
 
-|
 |
 
 -----------------------------
@@ -169,7 +167,6 @@ requirement package included:
         sudo docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
 
 |
-|
 
 ---------------------------
 
@@ -244,7 +241,6 @@ Using Docker Instruction
     .. note::
         This command will copy your directory to container and you can use terminal as superuser
 
-|
 |
 
 --------------

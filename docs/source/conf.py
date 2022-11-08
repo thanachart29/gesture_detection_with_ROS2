@@ -10,7 +10,7 @@ copyright = f"2022-{datetime.date.today().year}, {author}"
 
 
 master_doc = "index"
-language = None
+language = 'en'
 
 # Output options
 #html_theme = "sphinx_rtd_theme"

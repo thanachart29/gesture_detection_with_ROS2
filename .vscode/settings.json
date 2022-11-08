@@ -26,5 +26,7 @@
         "/home/pumid/Desktop/fra333/fra333_lab1_32/install/lab1_interfaces/lib/python3.8/site-packages",
         "/home/pumid/Desktop/fra333/fra333_lab1_32/install/fra333_lab1_32/lib/python3.8/site-packages",
         "/opt/ros/foxy/lib/python3.8/site-packages"
-    ]
+    ],
+    "cmake.sourceDirectory": "${workspaceFolder}/src/gesture_detection",
+    "esbonio.sphinx.confDir": ""
 }

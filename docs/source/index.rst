@@ -11,4 +11,4 @@ we are cacao's team.
    jetson_docker.rst
    nuc_docker.rst
    docker_instruction.rst
-   rocker_reference.rst
+   docker_reference.rst

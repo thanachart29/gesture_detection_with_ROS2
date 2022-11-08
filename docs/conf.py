@@ -4,8 +4,8 @@ import string
 
 
 # Package information
-project = "CATOCT"
-author = "Pi Thanacha Choopojcharoen"
+project = "CACAO@HOME Robot"
+author = "Cacao Team"
 copyright = f"2022-{datetime.date.today().year}, {author}"
 
 
@@ -18,9 +18,6 @@ html_static_path = ["_static"]
 html_style = "css/style.css"
 #html_logo = "logo.png"
 html_show_sphinx = False
-html_baseurl = "catoct.org"
-htmlhelp_basename = "catoctdoc"
-html_last_updated_fmt = ""
 
 # Doc version sidebar
 templates_path = ["_templates"]

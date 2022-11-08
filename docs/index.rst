@@ -16,5 +16,4 @@ continuous in position, velocity, and acceleration.
    rationale.rst
    installation.rst
    Examples <https://github.com/tchoopojcharoen/catoct/tree/main/examples>
-   api-reference.rst
-   CacaoDocker.rst
+   CONTRIBUTING.md

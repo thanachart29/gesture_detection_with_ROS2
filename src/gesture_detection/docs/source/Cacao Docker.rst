@@ -13,8 +13,8 @@ Jetson Xavier Docker Image
 
 docker repository: https://hub.docker.com/repository/docker/thanachart29/jetson_athome
 
-package version
-----------------
+Jetson Xavier package 
+-----------------------
 you can find all package at `<https://github.com/MBSE-2022-1/Software-Team/blob/docker/jetson_python_library.txt>`__ 
 
 requirement package included:
@@ -51,6 +51,7 @@ requirement package included:
     * Pybind11 2.10.0
 
 .. _[1]:
+
 [1] Enabling Jetson Containers on an x86 workstation (using qemu)
 ------------------------------------------------------------------
 
@@ -76,8 +77,9 @@ Inter NUC Docker Image
 
 docker repository: https://hub.docker.com/repository/docker/thanachart29/nuc_athome
 
-package version
-----------------
+Inter NUC package
+------------------
+
 you can find all package at `<https://github.com/MBSE-2022-1/Software-Team/blob/docker/nuc_python_library.txt>`__ 
 
 requirement package included:
@@ -114,6 +116,7 @@ requirement package included:
     * Pybind11 2.10.0
 
 .. _[2]:
+
 [2] Using Nvidia-container runtime (for using gpu on docker)
 --------------------------------------------------------------
 #. Setting up docker

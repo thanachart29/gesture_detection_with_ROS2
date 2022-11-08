@@ -7,10 +7,17 @@ and Intel NUC using for Navigation.
 Both processors do not have the same python environment, 
 therefore, Cacao's team is building the docker images for executing software in the same environment as Cacao's processor
 
+|
+|
+
+----------------------------
+
 Jetson Xavier Docker Image
 ==========================
 
 docker repository: https://hub.docker.com/repository/docker/thanachart29/jetson_athome
+
+--------------------------
 
 Jetson Xavier package 
 """"""""""""""""""""""""
@@ -71,10 +78,17 @@ requirement package included:
 
 Known limitation: Unfortunately you won’t be able to run any binary that calls into the NVIDIA driver on the x86 host.
 
+|
+|
+
+-----------------------------
+
 Inter NUC Docker Image
 =======================
 
 docker repository: https://hub.docker.com/repository/docker/thanachart29/nuc_athome
+
+------------------------------
 
 Inter NUC package
 """""""""""""""""""
@@ -154,6 +168,12 @@ requirement package included:
 
         sudo docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
 
+|
+|
+
+---------------------------
+
+
 Using Docker Instruction
 ========================
 
@@ -197,7 +217,8 @@ Using Docker Instruction
 
         docker run --rm -it <image name>
 
-    note: using --rm option for remove the container when it exits
+    .. note::
+        using --rm option for remove the container when it exits
 
 * Execute scripts from local hosts to run inside container
 
@@ -220,9 +241,13 @@ Using Docker Instruction
         docker cp <host file/directory> <container ID>:<container directory>
         docker exec -itd <container ID> /bin/bash
 
-    note: This command will copy your directory to container and you can use terminal as superuser
+    .. note::
+        This command will copy your directory to container and you can use terminal as superuser
 
+|
+|
 
+--------------
 
 Reference
 ==========

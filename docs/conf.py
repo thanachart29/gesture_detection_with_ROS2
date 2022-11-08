@@ -1,33 +1,26 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+import datetime
+import string
 
-# -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Gesture_detectionWithROS2'
-copyright = '2022, thanachart'
-author = 'thanachart'
+
+# Package information
+project = "CATOCT"
+author = "Pi Thanacha Choopojcharoen"
+copyright = f"2022-{datetime.date.today().year}, {author}"
+
+
 master_doc = "index"
 language = None
-# -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = [
-    "sphinx.ext.duration",
-    "sphinx.ext.doctest",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
-    "sphinx.ext.intersphinx",
-    'sphinx.ext.autosectionlabel',
-]
-
-# -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
-html_theme = 'alabaster'
-html_static_path = ['_static']
+# Output options
+#html_theme = "sphinx_rtd_theme"
+html_static_path = ["_static"]
+html_style = "css/style.css"
+#html_logo = "logo.png"
+html_show_sphinx = False
+html_baseurl = "catoct.org"
+htmlhelp_basename = "catoctdoc"
+html_last_updated_fmt = ""
 
 # Doc version sidebar
 templates_path = ["_templates"]

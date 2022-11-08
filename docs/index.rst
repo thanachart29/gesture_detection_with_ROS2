@@ -1,14 +1,20 @@
-.. Gesture_detectionWithROS2 documentation master file, created by
-   sphinx-quickstart on Tue Nov  8 09:35:42 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+CATOCT
+========
 
-Welcome to Gesture_detectionWithROS2's documentation!
-=====================================================
+CATOCT is a toolbox for generating a continuous-acceleration time-optimal cubic trajectory.
+Given a sequence of (multiple-degree-of-freedom) via points in joint space and limits on the magnitude of both velocity and acceleration of each degree of freedom, 
+the goal is to generate a piece-wise cubic trajectory that is time-optimal and satisfies both velocity and acceleration constraints. The trajectory must be 
+continuous in position, velocity, and acceleration.
 
+.. image:: pic/example.png
+  :width: 1000
+  :alt: Alternative text
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
 
+   rationale.rst
+   installation.rst
+   Examples <https://github.com/tchoopojcharoen/catoct/tree/main/examples>
+   api-reference.rst
    CacaoDocker.rst
-   

@@ -7,7 +7,8 @@ Welcome to Gesture_detectionWithROS2's documentation!
 =====================================================
 
 .. toctree::
+   :maxdepth: 1
+   :caption: Getting Started
 
-   Home <self>
-   Cacao Docker
+   CacaoDocker.rst
    

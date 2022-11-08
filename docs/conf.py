@@ -9,7 +9,8 @@
 project = 'Gesture_detectionWithROS2'
 copyright = '2022, thanachart'
 author = 'thanachart'
-
+master_doc = "index"
+language = None
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
@@ -21,13 +22,12 @@ extensions = [
     "sphinx.ext.intersphinx",
     'sphinx.ext.autosectionlabel',
 ]
-templates_path = ['_templates']
-exclude_patterns = []
-
-
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+
+# Doc version sidebar
+templates_path = ["_templates"]

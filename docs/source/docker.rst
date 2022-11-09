@@ -77,7 +77,9 @@ Enabling Jetson Containers on an x86 workstation (using qemu)
     >> magic 7f454c460201010000000000000000000200b700
     >> mask ffffffffffffff00fffffffffffffffffeffffff
 
-Known limitation: Unfortunately you won’t be able to run any binary that calls into the NVIDIA driver on the x86 host.
+.. note::
+    
+    Unfortunately you won’t be able to run any binary that calls into the NVIDIA driver on the x86 host.
 
 |
 

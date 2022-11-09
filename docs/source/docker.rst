@@ -204,11 +204,13 @@ Using Docker Instruction
 
 |
 
+----------------------------------------------------------
 
 .. _[2]:
 
 Using Nvidia-container runtime (for using gpu on docker)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+**********************************************************
+
 #. Setting up docker
 
     .. code-block:: console

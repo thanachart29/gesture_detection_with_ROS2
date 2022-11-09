@@ -6,7 +6,7 @@ we are cacao's team.
 .. toctree::
    :caption: CACAO'S Robot systems
 
-   docker_rationale.rst
+   .. docker_rationale.rst
    jetson_docker.rst
    nuc_docker.rst
    docker_instruction.rst

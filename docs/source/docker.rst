@@ -1,4 +1,4 @@
-Cacao Docker
+CACAO Docker
 ##################
 
 Cacao's Robot contains 2 processor unit that is Intel NUC and a Jetson Xavier NX developer kit. 
@@ -59,7 +59,7 @@ requirement package included:
 
 |
 
-Enabling Jetson Containers on an x86 workstation (using qemu)
+Enabling Jetson Containers on an x86 workstation (using qemu) [1]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. code-block:: console
@@ -166,9 +166,9 @@ Using Docker Instruction
     
         .. code-block:: console
 
-            docker run --rm -it --privileged 
-                                --env DISPLAY=unix$DISPLAY  
-                                -v /tmp/.X11-unix:/tmp/.X11-unix 
+            docker run --rm -it --privileged \
+                                --env DISPLAY=unix$DISPLAY \
+                                -v /tmp/.X11-unix:/tmp/.X11-unix \
                                 –gpus all –group-add audio <image name>
 
 * Run with bash command
@@ -208,10 +208,10 @@ Using Docker Instruction
 
 |
 
-----------------------------------------------------------
+-------------------------------------------------------------
 
-Using Nvidia-container runtime (for using gpu on docker)
-**********************************************************
+Using Nvidia-container runtime (for using gpu on docker) [2]
+*************************************************************
 
 #. Setting up docker
 
@@ -237,7 +237,11 @@ Using Nvidia-container runtime (for using gpu on docker)
         sudo apt-get update
         sudo apt-get install -y nvidia-docker2
 
-#. Restart the Docker daemon after setting the default runtime:
+#. Restart the Docker daemon after   .. docker_rationale.rst
+   .. jetson_docker.rst
+   .. nuc_docker.rst
+   .. docker_instruction.rst
+   .. docker_reference.rst setting the default runtime:
 
     .. code-block:: console
 

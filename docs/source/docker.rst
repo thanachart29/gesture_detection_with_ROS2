@@ -55,9 +55,9 @@ requirement package included:
     * Pyttsx3 0.29
     * Pybind11 2.10.0
 
-|
-
 .. _[1]:
+
+|
 
 Enabling Jetson Containers on an x86 workstation (using qemu)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -204,11 +204,11 @@ Using Docker Instruction
     .. note::
         This command will copy your directory to container and you can use terminal as superuser
 
+.. _[2]:
+
 |
 
 ----------------------------------------------------------
-
-.. _[2]:
 
 Using Nvidia-container runtime (for using gpu on docker)
 **********************************************************

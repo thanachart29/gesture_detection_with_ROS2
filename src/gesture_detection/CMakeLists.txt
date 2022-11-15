@@ -30,6 +30,7 @@ install(PROGRAMS
   "scripts/dummy_script.py"
   "scripts/image_publisher.py"
   "scripts/gesture_detection.py"
+  "scripts/Sample_RootFile.py"
   DESTINATION lib/${PROJECT_NAME}
 )
 

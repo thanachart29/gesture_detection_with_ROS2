@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/include/gesture_detection/cpp_header.hpp
+
+/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/src/cpp_node.cpp
+gesture_detection/cpp_header.hpp
+/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/src/gesture_detection/cpp_header.hpp
+iostream
+-
+

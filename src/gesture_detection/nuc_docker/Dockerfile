@@ -94,6 +94,14 @@ RUN /bin/bash -c "source /opt/ros/foxy/setup.bash"
 RUN /bin/bash -c "export TURTLEBOT3_MODEL=waffle"
 RUN /bin/bash -c "export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/foxy/share/turtlebot3_gazebo/models"
 ####### exceptfirmware package
+RUN sudo apt -y install ros-foxy-navigation2 ros-foxy-nav2-bringup \ 
+						ros-foxy-xacro ros-foxy-robot-state-publisher \ 
+						ros-foxy-ros2-controllers ros-foxy-ros2-control \ 
+						ros-foxy-slam-toolbox-dbgsym ros-foxy-nav2-* \ 
+						ros-foxy-robot-localization ros-foxy-gazebo-ros2-control \ 
+						ros-foxy-robot-localization*
+
+
 
 
 

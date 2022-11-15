@@ -7,7 +7,7 @@ from pycoral.utils.edgetpu import make_interpreter
 # import tensorflow as tf
 
 class CoralKeyPointClassifier(object):
-    def __init__(self, model_path='src/gesture_detection/scripts/model/keypoint_classifier/keypoint_classifier.tflite'):
+    def __init__(self, model_path='src/gesture_detection/scripts/model/keypoint_classifier/new_keypoint_classifier.tflite'):
         try:
             self.interpreter = make_interpreter(model_path_or_content= model_path)
         except ValueError:

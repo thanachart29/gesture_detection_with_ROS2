@@ -319,8 +319,8 @@ ament_cmake_symlink_install_files("/home/pumid/Desktop/athome/athome_ws/src/gest
 # install(DIRECTORY "/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/gesture_detection/" "DESTINATION" "lib/python3.8/site-packages/gesture_detection" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
 ament_cmake_symlink_install_directory("/home/pumid/Desktop/athome/athome_ws/src/gesture_detection" DIRECTORY "/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/gesture_detection/" "DESTINATION" "lib/python3.8/site-packages/gesture_detection" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
 
-# install(PROGRAMS "scripts/dummy_script.py" "scripts/image_publisher.py" "scripts/gesture_detection.py" "DESTINATION" "lib/gesture_detection")
-ament_cmake_symlink_install_programs("/home/pumid/Desktop/athome/athome_ws/src/gesture_detection" PROGRAMS "scripts/dummy_script.py" "scripts/image_publisher.py" "scripts/gesture_detection.py" "DESTINATION" "lib/gesture_detection")
+# install(PROGRAMS "scripts/dummy_script.py" "scripts/image_publisher.py" "scripts/gesture_detection.py" "scripts/Sample_RootFile.py" "DESTINATION" "lib/gesture_detection")
+ament_cmake_symlink_install_programs("/home/pumid/Desktop/athome/athome_ws/src/gesture_detection" PROGRAMS "scripts/dummy_script.py" "scripts/image_publisher.py" "scripts/gesture_detection.py" "scripts/Sample_RootFile.py" "DESTINATION" "lib/gesture_detection")
 
 # install("TARGETS" "cpp_node_test" "DESTINATION" "lib/gesture_detection")
 include("/home/pumid/Desktop/athome/athome_ws/build/gesture_detection/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")

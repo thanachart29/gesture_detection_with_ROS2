@@ -30,7 +30,7 @@ class GestureDetection(Node):
         self.started_publisher = self.create_publisher(Int8,'/detect_start_cmd/detected',10)
         self.detect_start_cmd_service = self.create_service(Empty_srv,'/detect_start_cmd/enable',self.enable_detect_start_cmd_callback)
         # self.enable_detect_start_cmd = False
-        self.enable_detect_start_cmd = True
+        self.enable_detect_start_cmd = False
         self.detect_start_cmd_status = Int8()
         self.detect_start_cmd_status.data = 0
 
@@ -48,14 +48,14 @@ class GestureDetection(Node):
         self.mp_drawing = mp.solutions.drawing_utils
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands(static_image_mode=False,
-                                         max_num_hands=2,
+                                         max_num_hands=1,
                                          min_detection_confidence=0.7,
                                          min_tracking_confidence=0.5,)
         ##### initial model
         self.keypoint_classifier = CoralKeyPointClassifier()
-        self.keypoint_classifier_labels = ['Open', 'Close', 'Pointer', 'OK']
+        self.keypoint_classifier_labels = ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
         self.cvFpsCalc = CvFpsCalc(buffer_len=10)
-        self.fps_que = deque(maxlen=16)
+        self.fps_que = deque(maxlen=60)
         self.hand_sign_que = deque(maxlen=60)
         self.imgEnable = False
 
@@ -77,16 +77,16 @@ class GestureDetection(Node):
         self.cp_img = copy.deepcopy(self.img)
         self.img = cv.cvtColor(self.img, cv.COLOR_BGR2RGB)
         self.imgEnable = True
-        fps = self.cvFpsCalc.get()
-        self.fps_que.append(fps)
-        print(fps)
+        self.fps = self.cvFpsCalc.get()
+        self.fps_que.append(self.fps)
+        if(len(self.fps_que) == 60):
+            print(np.average(self.fps))
+            self.fps_que.clear()
         
 
-        # self.detectGesture()
         # self.get_logger().info('Receiving video frame')
-        # cv.putText(self.cp_img, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
-        # cv.putText(self.cp_img, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
-        # print("FPS: " + str(fps))
+        # cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+        # cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
         # cv.imshow('Raw Webcam Feed', self.cp_img)
         # cv.waitKey(1)
 
@@ -95,10 +95,12 @@ class GestureDetection(Node):
         pass
     
     def enable_detect_start_cmd_callback(self,request,response):
+        print('starting detect started command')
         self.enable_detect_start_cmd = True
         return response
 
     def enable_detect_pointed_callback(self,request,response):
+        print('starting detect pointed command')
         self.enable_detect_pointed = True
         return response
 
@@ -116,33 +118,44 @@ class GestureDetection(Node):
                     pre_processed_landmark_list = self.pre_process_landmark(landmark_list)
                     hand_sign_id = self.keypoint_classifier(pre_processed_landmark_list)
                     self.hand_sign_que.append(hand_sign_id)
-                    print(hand_sign_id)
+                    print(Counter(self.hand_sign_que))
+                    print(Counter(self.hand_sign_que)[1])
     
-                    if (Counter(self.hand_sign_que))[0] == 60:
-                        self.detect_start_cmd_status.data = 1
-                        self.enable_detect_start_cmd = False
+                    if (Counter(self.hand_sign_que))[1] == 60:
+                        self.hand_sign_que.clear()
+                        if(self.enable_detect_start_cmd == True):
+                            self.detect_start_cmd_status.data = 1
+                            self.enable_detect_start_cmd = False
+                        print('found started command')
                     elif (Counter(self.hand_sign_que))[2] == 60:
-                        self.detect_pointed_status.data = 1
-                        self.enable_detect_pointed = False
+                        self.hand_sign_que.clear()
+                        if(self.enable_detect_pointed == True):
+                            self.detect_pointed_status.data = 1
+                            self.enable_detect_pointed = False
+                        print('found pointed command')
                     else:
                         self.detect_start_cmd_status.data = 0
                         self.detect_pointed_status.data = 0
-                    # ##### disply #####
-                    # self.mp_drawing.draw_landmarks( self.cp_img, 
-                    #                                 hand_landmarks, 
-                    #                                 self.mp_hands.HAND_CONNECTIONS,
-                    #                                 self.mp_drawing_styles.get_default_hand_landmarks_style(), 
-                    #                                 self.mp_drawing_styles.get_default_hand_connections_style())
+                    ##### disply #####
+                    self.mp_drawing.draw_landmarks( self.cp_img, 
+                                                    hand_landmarks, 
+                                                    self.mp_hands.HAND_CONNECTIONS,
+                                                    self.mp_drawing_styles.get_default_hand_landmarks_style(), 
+                                                    self.mp_drawing_styles.get_default_hand_connections_style())
     
-                    # brect = self.calc_bounding_rect(hand_landmarks)
-                    # cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
-                    # cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[1] - 22),(0, 0, 0), -1)
-                    # hand_sign_text = self.keypoint_classifier_labels[hand_sign_id]
-                    # print("hand_sign_id: " + str(hand_sign_id))
-                    # info_text = handedness.classification[0].label[0:]
-                    # if hand_sign_text != "":
-                    #     info_text = info_text + ':' + hand_sign_text
-                    # cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+                    brect = self.calc_bounding_rect(hand_landmarks)
+                    cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
+                    cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[1] - 22),(0, 0, 0), -1)
+                    hand_sign_text = self.keypoint_classifier_labels[hand_sign_id]
+                    print("hand_sign_id: " + str(hand_sign_id))
+                    info_text = handedness.classification[0].label[0:]
+                    if hand_sign_text != "":
+                        info_text = info_text + ':' + hand_sign_text
+                    cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+            cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+            cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+            cv.imshow('Raw Webcam Feed', self.cp_img)
+            cv.waitKey(1)
 
     def calc_landmark_list(self, landmarks):
         image_width, image_height = self.cp_img.shape[1], self.cp_img.shape[0]

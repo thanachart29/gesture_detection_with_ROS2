@@ -118,6 +118,12 @@ To check your kernel version:
             mkdir build && cd build
             cmake ../ -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=false
             make uninstall && make clean && make -j8 && make install
+        
+        .. note::
+            
+            Run the top level CMake command with the following additional flag -DBUILD_PYTHON_BINDINGS:bool=true:
+
+            For building a self-contained (statically compiled) pyrealsense2 library add the CMake flag: -DBUILD_SHARED_LIBS=false
 
 .. _[4]:
 
@@ -134,7 +140,7 @@ To check your kernel version:
 
         .. code-block:: console
 
-            git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-beta
+            git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-development
             cd ~/ros2_ws
 
     * Install dependencies
@@ -149,6 +155,7 @@ To check your kernel version:
         .. note::
 
             If error occurred on line 4 change command to
+            
             `rosdep install -i --from-path src --ignore-src -r -y --rosdistro foxy`
 
 

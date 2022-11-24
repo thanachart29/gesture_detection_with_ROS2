@@ -6,6 +6,6 @@ Perception
 Cacao's perception
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    
    docs/gesture_perception.rst

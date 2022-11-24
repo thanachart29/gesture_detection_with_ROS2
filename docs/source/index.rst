@@ -7,7 +7,6 @@ we are cacao's team.
    :caption: CACAO'S Robot systems
 
    cacao_software.rst
-   docker.rst
 
 .. toctree::
    :caption: CACAO'S Robot sensors

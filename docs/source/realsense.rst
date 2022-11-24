@@ -14,7 +14,7 @@ Usage instruction
 
 * Basic launch ros-realsens2_camera
 
-    .. code-block:: console
+    .. code-block:: bash
 
         ros2 launch realsense2_camera rs_launch.py \
                     rgb_camera.profile:=640x480x30 \
@@ -35,7 +35,7 @@ Usage instruction
 
 * launch realsense2 in RVIZ
 
-    .. code-block:: console
+    .. code-block:: bash
 
         ros2 launch realsense2_description view_model.launch.py \
                     model:=test_d455_camera.urdf.xacro
@@ -65,7 +65,7 @@ Installation
 ROS2 Wrapper for Intel® RealSense™ Devices support kernel version 4.[4, 8,10,13,15], 4.16(2) , 4.18, 5.[0, 3, 4, 8]
 To check your kernel version:
 
-.. code-block:: console
+.. code-block:: bash
 
     uname -r
 
@@ -77,20 +77,20 @@ To check your kernel version:
 
     * Make Ubuntu Up-to-date
 
-        .. code-block:: console
+        .. code-block:: bash
 
             sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
             sudo update-grub && sudo reboot
 
     * Download/Clone librealsense github repository
 
-        .. code-block:: console
+        .. code-block:: bash
 
             git clone https://github.com/IntelRealSense/librealsense.git
 
     * Prepare Linux Backend and the Dev. Environment
 
-        .. code-block:: console
+        .. code-block:: bash
 
             sudo apt-get install git libssl-dev libusb-1.0-0-dev libudev-dev pkg-config libgtk-3-dev
             sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev at
@@ -98,7 +98,7 @@ To check your kernel version:
 
     * Run Intel Realsense permissions script from librealsense root directory
 
-        .. code-block:: console
+        .. code-block:: bash
 
             cd librealsense
             ./scripts/setup_udev_rules.sh
@@ -106,14 +106,14 @@ To check your kernel version:
 
     * Build and apply patched kernel modules for
 
-        .. code-block:: console
+        .. code-block:: bash
 
             ./scripts/patch-realsense-ubuntu-lts.sh
 
 
     * Building librealsense2 SDK
 
-        .. code-block:: console
+        .. code-block:: bash
 
             mkdir build && cd build
             cmake ../ -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=false
@@ -131,21 +131,21 @@ To check your kernel version:
 
     * Create a ROS2 workspace
 
-        .. code-block:: console
+        .. code-block:: bash
 
             mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src/
 
 
     * Clone the latest ROS2 Intel® RealSense™ wrapper
 
-        .. code-block:: console
+        .. code-block:: bash
 
             git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-development
             cd ~/ros2_ws
 
     * Install dependencies
 
-        .. code-block:: console
+        .. code-block:: bash
 
             sudo apt-get install python3-rosdep -y
             sudo rosdep init
@@ -162,7 +162,7 @@ To check your kernel version:
 
     * Build and Terminal environment
 
-        .. code-block:: console
+        .. code-block:: bash
 
             colcon build
             ##### example for foxy distro 

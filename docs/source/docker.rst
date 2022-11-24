@@ -1,4 +1,6 @@
-CACAO Docker
+.. _docker:
+
+Docker
 ##################
 
 Cacao's Robot contains 2 processor unit that is Intel NUC and a Jetson Xavier NX developer kit. 
@@ -62,7 +64,7 @@ requirement package included:
 Enabling Jetson Containers on an x86 workstation (using qemu) [1]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-.. code-block:: console
+.. code-block:: bash
 
     $ sudo apt-get install qemu binfmt-support qemu-user-static
     # Check if the entries look good.
@@ -142,19 +144,19 @@ Using Docker Instruction
 
     * Jetson Xavier Images 
 
-        .. code-block:: console
+        .. code-block:: bash
 
             docker pull thanachart29/jetson_athome:latest
     
     * Intel NUC Images
 
-        .. code-block:: console
+        .. code-block:: bash
 
             docker pull thanachart29/nuc_athome:latest
 
 * Run a command in a new containers
 
-    .. code-block:: console
+    .. code-block:: bash
 
         docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
@@ -164,7 +166,7 @@ Using Docker Instruction
 
     For example
     
-        .. code-block:: console
+        .. code-block:: bash
 
             docker run --rm -it --privileged \
                                 --env DISPLAY=unix$DISPLAY \
@@ -173,7 +175,7 @@ Using Docker Instruction
 
 * Run with bash command
 
-    .. code-block:: console
+    .. code-block:: bash
 
         docker run --rm -it <image name>
 
@@ -182,20 +184,20 @@ Using Docker Instruction
 
 * Execute scripts from local hosts to run inside container
 
-    .. code-block:: console
+    .. code-block:: bash
 
         docker run -i <image name> <python3, e.g.> < <path to scripts>
 
     OR
 
-    .. code-block:: console
+    .. code-block:: bash
 
         docker run -itd <image name>
         docker exec -i <container ID> <python3, e.g.> <  <path to scripts>
     
 * Basically, run ros package in docker
 
-    .. code-block:: console
+    .. code-block:: bash
 
         docker run -itd <image name>
         docker cp <host file/directory> <container ID>:<container directory>
@@ -215,14 +217,14 @@ Using Nvidia-container runtime (for using gpu on docker) [2]
 
 #. Setting up docker
 
-    .. code-block:: console
+    .. code-block:: bash
         
         curl https://get.docker.com | sh \
             && sudo systemctl --now enable docker
 
 #. Setting up NVIDIA Container Toolkit
 
-    .. code-block:: console
+    .. code-block:: bash
 
         distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
             && curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
@@ -232,7 +234,7 @@ Using Nvidia-container runtime (for using gpu on docker) [2]
 
 #. Install the nvidia-docker2
 
-    .. code-block:: console
+    .. code-block:: bash
 
         sudo apt-get update
         sudo apt-get install -y nvidia-docker2
@@ -249,7 +251,7 @@ Using Nvidia-container runtime (for using gpu on docker) [2]
 
 #. (optional) tested by running a base CUDA container
 
-    .. code-block:: console
+    .. code-block:: bash
 
         sudo docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
 

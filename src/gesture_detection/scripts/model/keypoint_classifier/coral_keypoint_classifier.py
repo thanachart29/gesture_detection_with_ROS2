@@ -3,11 +3,12 @@
 import numpy as np
 import sys
 import os
+print("This module is in {}" .format(os.path.dirname(os.path.realpath(__file__))))
 from pycoral.utils.edgetpu import make_interpreter
 # import tensorflow as tf
 
 class CoralKeyPointClassifier(object):
-    def __init__(self, model_path='src/gesture_detection/scripts/model/keypoint_classifier/new_keypoint_classifier.tflite'):
+    def __init__(self, model_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "new_keypoint_classifier.tflite")):
         try:
             self.interpreter = make_interpreter(model_path_or_content= model_path)
         except ValueError:

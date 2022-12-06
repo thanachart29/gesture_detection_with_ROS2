@@ -5,8 +5,6 @@ Realsense camera
 
 eiei zaza we use d455 camera naja
 
-|
-
 .. _[1]:
 
 ----------------------------

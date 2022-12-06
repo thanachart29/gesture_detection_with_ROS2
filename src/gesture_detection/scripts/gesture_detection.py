@@ -6,7 +6,7 @@ import cv2 as cv
 from cv_bridge import CvBridge
 import numpy as np
 import mediapipe as mp
-from utils import CvFpsCalc
+# from utils import CvFpsCalc
 from collections import deque, Counter
 import os
 print('importing model')
@@ -54,9 +54,9 @@ class GestureDetection(Node):
         ##### initial model
         self.keypoint_classifier = CoralKeyPointClassifier()
         self.keypoint_classifier_labels = ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
-        self.cvFpsCalc = CvFpsCalc(buffer_len=10)
-        self.fps_que = deque(maxlen=60)
-        self.hand_sign_que = deque(maxlen=60)
+        # self.cvFpsCalc = CvFpsCalc(buffer_len=10)
+        # self.fps_que = deque(maxlen=60)
+        self.hand_sign_que = deque(maxlen=20)
         self.imgEnable = False
 
 
@@ -77,11 +77,11 @@ class GestureDetection(Node):
         self.cp_img = copy.deepcopy(self.img)
         self.img = cv.cvtColor(self.img, cv.COLOR_BGR2RGB)
         self.imgEnable = True
-        self.fps = self.cvFpsCalc.get()
-        self.fps_que.append(self.fps)
-        if(len(self.fps_que) == 60):
-            print(np.average(self.fps))
-            self.fps_que.clear()
+        # self.fps = self.cvFpsCalc.get()
+        # self.fps_que.append(self.fps)
+        # if(len(self.fps_que) == 60):
+        #     print(np.average(self.fps))
+        #     self.fps_que.clear()
         
 
         # self.get_logger().info('Receiving video frame')
@@ -91,7 +91,7 @@ class GestureDetection(Node):
         # cv.waitKey(1)
 
     def getPointCloundCallback(self, point_clound:PointCloud2):
-        a = point_clound.read_points()
+        # a = point_clound.read_points()
         pass
     
     def enable_detect_start_cmd_callback(self,request,response):
@@ -121,13 +121,13 @@ class GestureDetection(Node):
                     print(Counter(self.hand_sign_que))
                     print(Counter(self.hand_sign_que)[1])
     
-                    if (Counter(self.hand_sign_que))[1] == 60:
+                    if (Counter(self.hand_sign_que))[1] == 20:
                         self.hand_sign_que.clear()
                         if(self.enable_detect_start_cmd == True):
                             self.detect_start_cmd_status.data = 1
                             self.enable_detect_start_cmd = False
                         print('found started command')
-                    elif (Counter(self.hand_sign_que))[2] == 60:
+                    elif (Counter(self.hand_sign_que))[2] == 20:
                         self.hand_sign_que.clear()
                         if(self.enable_detect_pointed == True):
                             self.detect_pointed_status.data = 1
@@ -136,26 +136,26 @@ class GestureDetection(Node):
                     else:
                         self.detect_start_cmd_status.data = 0
                         self.detect_pointed_status.data = 0
-                    ##### disply #####
-                    self.mp_drawing.draw_landmarks( self.cp_img, 
-                                                    hand_landmarks, 
-                                                    self.mp_hands.HAND_CONNECTIONS,
-                                                    self.mp_drawing_styles.get_default_hand_landmarks_style(), 
-                                                    self.mp_drawing_styles.get_default_hand_connections_style())
+            #         ##### disply #####
+            #         self.mp_drawing.draw_landmarks( self.cp_img, 
+            #                                         hand_landmarks, 
+            #                                         self.mp_hands.HAND_CONNECTIONS,
+            #                                         self.mp_drawing_styles.get_default_hand_landmarks_style(), 
+            #                                         self.mp_drawing_styles.get_default_hand_connections_style())
     
-                    brect = self.calc_bounding_rect(hand_landmarks)
-                    cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
-                    cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[1] - 22),(0, 0, 0), -1)
-                    hand_sign_text = self.keypoint_classifier_labels[hand_sign_id]
-                    print("hand_sign_id: " + str(hand_sign_id))
-                    info_text = handedness.classification[0].label[0:]
-                    if hand_sign_text != "":
-                        info_text = info_text + ':' + hand_sign_text
-                    cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
-            cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
-            cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
-            cv.imshow('Raw Webcam Feed', self.cp_img)
-            cv.waitKey(1)
+            #         brect = self.calc_bounding_rect(hand_landmarks)
+            #         cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
+            #         cv.rectangle(self.cp_img, (brect[0], brect[1]), (brect[2], brect[1] - 22),(0, 0, 0), -1)
+            #         hand_sign_text = self.keypoint_classifier_labels[hand_sign_id]
+            #         print("hand_sign_id: " + str(hand_sign_id))
+            #         info_text = handedness.classification[0].label[0:]
+            #         if hand_sign_text != "":
+            #             info_text = info_text + ':' + hand_sign_text
+            #         cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+            # cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+            # cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+            # cv.imshow('Raw Webcam Feed', self.cp_img)
+            # cv.waitKey(1)
 
     def calc_landmark_list(self, landmarks):
         image_width, image_height = self.cp_img.shape[1], self.cp_img.shape[0]

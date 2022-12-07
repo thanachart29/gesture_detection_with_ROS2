@@ -1,19 +1,13 @@
-#!/usr/bin/env python
+#!/home/pumid/Desktop/athome/bin/python3
 # -*- coding: utf-8 -*-
 import numpy as np
 import tensorflow as tf
 import os
-print(os.getcwd())
+print("This module is in {}" .format(os.path.dirname(os.path.realpath(__file__))))
 
 class KeyPointClassifier(object):
-    def __init__(
-        self,
-        model_path='model/keypoint_classifier/new_keypoint_classifier.tflite',
-        num_threads=1,
-    ):
-        self.interpreter = tf.lite.Interpreter(model_path=model_path,
-                                               num_threads=num_threads)
-
+    def __init__(self, model_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "new_keypoint_classifier.tflite")):
+        self.interpreter = tf.lite.Interpreter(model_path=model_path)
         self.interpreter.allocate_tensors()
         self.input_details = self.interpreter.get_input_details()
         self.output_details = self.interpreter.get_output_details()

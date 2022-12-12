@@ -31,6 +31,7 @@ Architecture
 
     Tracking people and send their position to base_controller.py
 
+
 .. tabs::
 
    .. tab:: Apples
@@ -44,6 +45,8 @@ Architecture
    .. tab:: Oranges
 
       Oranges are orange.
+
+
 
 .. tabs::
 

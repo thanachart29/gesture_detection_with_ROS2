@@ -18,6 +18,13 @@ Overview
 
 The purpose of gesture perceptual application for sensing human behavior, living with the human the robot must know human behavior and interact with humans. The posture can specify many things whether emotion, desire, or action so gesture perception is necessary for living with humans. And the minor purpose is to command the robot as we say the posture can specify the desire. The basic way to command the robot is the posture and we can adjust the special command following the desire of the developer however it depends on the suitability to use in real life
 
+- **ros2 system architecture**
+
+.. image:: ./images/gesture_ros_arch.png
+    :width: 480
+    :align: center
+    :alt: ros2 system architecture
+    
 
 Installation
 *************
@@ -72,7 +79,7 @@ API Reference
 .. image:: ./images/gesture_diagram.png
     :width: 640
     :align: center
-    :alt: Navigation2 Block Diagram
+    :alt: gesture detection program structure
 
 The gesture detection function consist of image subscriber, extract image feature, preprocessing and classifier model
 
@@ -123,7 +130,7 @@ The gesture detection function consist of image subscriber, extract image featur
 .. image:: ./images/gesture_model.png
     :width: 640
     :align: center
-    :alt: Navigation2 Block Diagram
+    :alt: gesture model architecture
 
 |
 

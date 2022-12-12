@@ -97,23 +97,27 @@ The gesture detection function consist of image subscriber, extract image featur
 
   .. rst:directive:: calc_landmark_list(self, landmarks)
 
+    The hand landmarks from mediapipe are normalized [0.0, 1.0] this function will convert the normalized value to the picture position
+
     :parameters:
       
-      eieiza
+      landmarks: normalize hand landmarks from the result of mediapipe
 
     :return:
     
-      list of fucking shit
+      The same size of the input array respective to the image size with format [x, y, z]
 
   .. rst:directive:: pre_process_landmark(self, landmark_list)
 
+    This function using for preprocessing the hand landmark by subtracting all hand keypoint with the wrist position value and chaining the position x, y and z together
+
     :parameters:
       
-      eieiza
+      landmark_list: list of hand landmarks respective to the image size in the format [x, y, z]
 
     :return:
     
-      list of fucking shit
+      a dimension list of scale hand landmarks x follow by  y and z position
 
   .. rst:directive:: calc_bounding_rect(self, landmarks)
 

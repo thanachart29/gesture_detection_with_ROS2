@@ -51,7 +51,7 @@ Example
 
     .. note:: 
 
-      always navigate to workspace directory before build and symlink-install is necessary
+      Always navigate to workspace directory before build and symlink-install is necessary
       
 - Run the package
 
@@ -64,6 +64,7 @@ Example
     .. code-block:: bash
 
       ros2 service call <service name> std_srvs/srv/Empty
+
 
 API Reference
 ***************
@@ -83,10 +84,12 @@ the image feature is extracted by mediapipe library Mediapipe hand landmarks are
 See the reference API here: https://google.github.io/mediapipe/solutions/hands.html#python-solution-api
 
 
-Function API reference
+preprocessing function
 """"""""""""""""""""""""
 
 .. rst:directive:: calc_landmark_list(self, landmarks)
+
+>>> iloveu(test)
   params  landmarks: 
   
   return  ee

@@ -8,7 +8,7 @@ project = "CACAO@HOME Robot"
 author = "Cacao Team"
 copyright = f"2022-{datetime.date.today().year}, {author}"
 
-extensions = ['breathe', 'sphinx.ext.graphviz', 'sphinxcontrib.plantuml', 'sphinx.ext.extlinks']
+# extensions = ['breathe', 'sphinx.ext.graphviz', 'sphinxcontrib.plantuml', 'sphinx.ext.extlinks']
 
 master_doc = "index"
 language = 'en'

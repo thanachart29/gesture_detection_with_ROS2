@@ -3,14 +3,18 @@
 Gesture Perception
 ###################
 
-.. video:: ./video/gesture_video.mp4
-   :width: 640
-   :height: 360
-   :autoplay:
-   :nocontrols:
+.. raw:: html
+
+    <h1 align="center">
+      <div>
+        <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+          <iframe width="480" height="270" src="https://www.youtube.com/embed/OklxMhdDfe0?autoplay=1&mute=1" frameborder="1" allowfullscreen></iframe>
+        </div>
+      </div>
+    </h1>
 
 .. image:: ./images/gesture_diagram.png
-    :width: 700px
+    :width: 480
     :align: center
     :alt: Navigation2 Block Diagram
 

@@ -36,7 +36,7 @@ Installation
 Example
 *********
 
-- first clone the repository from GitHub following this command
+- First clone the repository from GitHub following this command
 
     .. code-block:: bash
 
@@ -77,18 +77,14 @@ API Reference
 The gesture detection function consist of image subscriber, extract image feature, preprocessing and classifier model
 
 
-test
-=============
-
-
-  **Mediapipe**
+- **Mediapipe**
 
   the image feature is extracted by mediapipe library Mediapipe hand landmarks are composed of x, y, and z. x and y are normalized to [0.0, 1.0] by the image width and height respectively. z represents the landmark depth with the depth at the wrist being the origin, and the smaller the value the closer the landmark is to the camera. The magnitude of z uses roughly the same scale as x. The preprocessing function will set the wrist position as the origin point and then subtract the other 20 points from the origin point then normalize the position 
 
   See the reference API here: https://google.github.io/mediapipe/solutions/hands.html#python-solution-api
 
 
-  **preprocessing function**
+- **preprocessing function**
 
   .. rst:directive:: calc_landmark_list(self, landmarks)
 
@@ -122,7 +118,7 @@ test
 
 
 
-  **Classifier model architecture**
+- **Classifier model architecture**
 
 .. image:: ./images/gesture_model.png
     :width: 640

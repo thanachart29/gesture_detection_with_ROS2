@@ -9,7 +9,7 @@ author = "Cacao Team"
 copyright = f"2022-{datetime.date.today().year}, {author}"
 
 # extensions = ['breathe', 'sphinx.ext.graphviz', 'sphinxcontrib.plantuml', 'sphinx.ext.extlinks']
-extensions = ['sphinx_tabs.tabs']
+extensions = ['sphinx_tabs.tabs', "sphinx_inline_tabs",]
 sphinx_tabs_valid_builders = ['linkcheck']
 
 master_doc = "index"

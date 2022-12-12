@@ -86,32 +86,10 @@ See the reference API here: https://google.github.io/mediapipe/solutions/hands.h
 Function API reference
 """"""""""""""""""""""""
 
-.. highlight:: bash
-   :linenothreshold: 1
-
-A cool bit of code::
-
-   #!/bin/bash
-   # Some cool Bash code
-   echo ${BASH_VERSINFO[*]}
-
-.. highlight:: none
-
-.. code-block:: rst
-   :caption: Documentation
-
-   A bit of **rst** which should be *highlighted* properly.
-
-.. code-block:: python
-   :caption: Script
-   :linenos:
-
-   import sys
-   sys.exit(1)
-
+.. rst:directive:: calc_landmark_list(self, landmarks)
+  params  landmarks: 
   
-
-
+  return  ee
 
 Classifier model architecture
 """"""""""""""""""""""""""""""

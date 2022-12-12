@@ -72,15 +72,15 @@ Architecture
 
     Recieve position from people_detection_scripts.py and compute wheel effort to control actuator for people following
 
-    **Topic**
+.. tabs::
 
-    Publish
+   .. tab:: Topic
 
         /cmd_vel[geometry_msgs/Twist]
 
             Publish publist linear velocity and angular velocity of robot to wheel controller node
 
-    Subscribe
+   .. tab:: Subscribe
 
         /goal_update[geometry_msgs/PoseStamped]
 
@@ -89,6 +89,7 @@ Architecture
         /people_detection/status[std_msgs/Uint8]
 
             Subscribe status of people follower status(status 1 = follow otherwise stop)
+
 
 Concept(How does it work?)
 """"""""""""""""""""""""""""

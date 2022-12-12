@@ -69,48 +69,46 @@ Example
 API Reference
 ***************
 
-The gesture detection function consist of image subscriber, extract image feature, preprocessing and classifier model
-
 .. image:: ./images/gesture_diagram.png
     :width: 640
     :align: center
     :alt: Navigation2 Block Diagram
 
-Mediapipe
-
-the image feature is extracted by mediapipe library Mediapipe hand landmarks are composed of x, y, and z. x and y are normalized to [0.0, 1.0] by the image width and height respectively. z represents the landmark depth with the depth at the wrist being the origin, and the smaller the value the closer the landmark is to the camera. The magnitude of z uses roughly the same scale as x. The preprocessing function will set the wrist position as the origin point and then subtract the other 20 points from the origin point then normalize the position 
-
-See the reference API here: https://google.github.io/mediapipe/solutions/hands.html#python-solution-api
+The gesture detection function consist of image subscriber, extract image feature, preprocessing and classifier model
 
 
-preprocessing function
-""""""""""""""""""""""""
+  **Mediapipe**
 
-.. rst:directive:: calc_landmark_list(self, landmarks)
+    the image feature is extracted by mediapipe library Mediapipe hand landmarks are composed of x, y, and z. x and y are normalized to [0.0, 1.0] by the image width and height respectively. z represents the landmark depth with the depth at the wrist being the origin, and the smaller the value the closer the landmark is to the camera. The magnitude of z uses roughly the same scale as x. The preprocessing function will set the wrist position as the origin point and then subtract the other 20 points from the origin point then normalize the position 
+
+    See the reference API here: https://google.github.io/mediapipe/solutions/hands.html#python-solution-api
 
 
->>> iloveu(test)
-  params  landmarks: 
-  
-  return  ee
+  **preprocessing function**
 
-Classifier model architecture
-""""""""""""""""""""""""""""""
+    .. rst:directive:: calc_landmark_list(self, landmarks)
+        
+      params landmarks:
+      return ee
+
+  **Classifier model architecture**
 
 .. image:: ./images/gesture_model.png
     :width: 640
     :align: center
     :alt: Navigation2 Block Diagram
 
-Input: 42 length arrays
+|
 
-Output: hand class ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
+    Input: 42 length arrays
+
+    Output: hand class ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
 
 
 Problem and future plan
 *************************
 
-\Gesture perception tasks on robocup@home
+Gesture perception tasks on robocup@home
 
 - Task 5.1 carry my luggage
 

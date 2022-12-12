@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Realsense camera &#8212; CACAO@HOME Robot  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/tabs.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Software Integration" href="../../software_integration/index.html" />
+    <link rel="prev" title="Docker" href="docker.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="realsense-camera">
+<span id="realsense"></span><h1>Realsense camera<a class="headerlink" href="#realsense-camera" title="Permalink to this heading">¶</a></h1>
+<p>eiei zaza we use d455 camera naja</p>
+<hr class="docutils" id="id1" />
+<section id="usage-instruction">
+<h2>Usage instruction<a class="headerlink" href="#usage-instruction" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>Basic launch ros-realsens2_camera</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch realsense2_camera rs_launch.py <span class="se">\</span>
+            rgb_camera.profile:<span class="o">=</span>640x480x30 <span class="se">\</span>
+            depth_module.profile:<span class="o">=</span>640x480x30 <span class="se">\</span>
+            pointcloud.enable:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Add parameter guide</em></p>
+<p>Set RGB camera parameter: rgb_camera.profile:=&lt;width&gt;x&lt;heigh&gt;x&lt;FPS&gt;</p>
+<p>Set depth camera parameter: depth_module.profile:=&lt;width&gt;x&lt;heigh&gt;x&lt;FPS&gt;</p>
+<p>Enable pointclound: pointcloud.enable:=true</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>launch realsense2 in RVIZ</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch realsense2_description view_model.launch.py <span class="se">\</span>
+            model:<span class="o">=</span>test_d455_camera.urdf.xacro
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>the following command will contain topic as listed below:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>/camera/aligned_depth_to_color/camera_info</p></li>
+<li><p>/camera/aligned_depth_to_color/image_raw</p></li>
+<li><p>/camera/color/camera_info</p></li>
+<li><p>/camera/color/image_raw</p></li>
+<li><p>/camera/color/metadata</p></li>
+<li><p>/camera/depth/camera_info</p></li>
+<li><p>/camera/depth/color/points</p></li>
+<li><p>/camera/depth/image_rect_raw</p></li>
+<li><p>/camera/depth/metadata</p></li>
+<li><p>/camera/extrinsics/depth_to_color</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<p id="id2">ROS2 Wrapper for Intel® RealSense™ Devices support kernel version 4.[4, 8,10,13,15], 4.16(2) , 4.18, 5.[0, 3, 4, 8]
+To check your kernel version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uname -r
+</pre></div>
+</div>
+<hr class="docutils" />
+<ul id="id3">
+<li><p>Install the latest Intel® RealSense™ SDK 2.0</p>
+<blockquote>
+<div><ul>
+<li><p>Make Ubuntu Up-to-date</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade <span class="o">&amp;&amp;</span> sudo apt-get dist-upgrade
+sudo update-grub <span class="o">&amp;&amp;</span> sudo reboot
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Download/Clone librealsense github repository</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/IntelRealSense/librealsense.git
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Prepare Linux Backend and the Dev. Environment</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install git libssl-dev libusb-1.0-0-dev libudev-dev pkg-config libgtk-3-dev
+sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev at
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Run Intel Realsense permissions script from librealsense root directory</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> librealsense
+./scripts/setup_udev_rules.sh
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Build and apply patched kernel modules for</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/patch-realsense-ubuntu-lts.sh
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Building librealsense2 SDK</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+cmake ../ -DBUILD_EXAMPLES<span class="o">=</span><span class="nb">true</span> -DBUILD_GRAPHICAL_EXAMPLES<span class="o">=</span><span class="nb">false</span>
+make uninstall <span class="o">&amp;&amp;</span> make clean <span class="o">&amp;&amp;</span> make -j8 <span class="o">&amp;&amp;</span> make install
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run the top level CMake command with the following additional flag -DBUILD_PYTHON_BINDINGS:bool=true:</p>
+<p>For building a self-contained (statically compiled) pyrealsense2 library add the CMake flag: -DBUILD_SHARED_LIBS=false</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul id="id4">
+<li><p>Install Intel® RealSense™ ROS2 wrapper from sources</p>
+<blockquote>
+<div><ul>
+<li><p>Create a ROS2 workspace</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/ros2_ws/src <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/ros2_ws/src/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Clone the latest ROS2 Intel® RealSense™ wrapper</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-development
+<span class="nb">cd</span> ~/ros2_ws
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Install dependencies</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install python3-rosdep -y
+sudo rosdep init
+rosdep update
+rosdep install -i --from-path src --rosdistro <span class="nv">$ROS_DISTRO</span> --skip-keys<span class="o">=</span>librealsense2 -y
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If error occurred on line 4 change command to</p>
+<p><cite>rosdep install -i –from-path src –ignore-src -r -y –rosdistro foxy</cite></p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Build and Terminal environment</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build
+<span class="c1">##### example for foxy distro</span>
+<span class="nv">ROS_DISTRO</span><span class="o">=</span>foxy
+<span class="nb">source</span> /opt/ros/foxy/setup.bash <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/ros2_ws
+. install/local_setup.bash
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="#id1">[1]</a> : <a class="reference external" href="https://github.com/IntelRealSense/realsense-ros/tree/ros2-development">https://github.com/IntelRealSense/realsense-ros/tree/ros2-development</a></p>
+<p><a class="reference internal" href="#id2">[2]</a> : <a class="reference external" href="https://github.com/IntelRealSense/librealsense/releases/tag/v2.51.1">https://github.com/IntelRealSense/librealsense/releases/tag/v2.51.1</a></p>
+<p><a class="reference internal" href="#id3">[3]</a> : <a class="reference external" href="https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md">https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md</a></p>
+<p><a class="reference internal" href="#id4">[4]</a> : <a class="reference external" href="https://github.com/IntelRealSense/realsense-ros/tree/ros2-beta">https://github.com/IntelRealSense/realsense-ros/tree/ros2-beta</a></p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CACAO@HOME Robot</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">CACAO'S Robot application</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../fabrication/index.html">Fabrication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../navigation/index.html">Navigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manipulation/index.html">Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../perception/index.html">Perception</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Appendix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CACAO'S Software integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software_integration/index.html">Software Integration</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Appendix</a><ul>
+      <li>Previous: <a href="docker.html" title="previous chapter">Docker</a></li>
+      <li>Next: <a href="../../software_integration/index.html" title="next chapter">Software Integration</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022-2022, Cacao Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/appendix/docs/realsense.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

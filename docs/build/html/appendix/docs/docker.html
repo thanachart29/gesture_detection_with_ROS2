@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Docker &#8212; CACAO@HOME Robot  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/tabs.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Realsense camera" href="realsense.html" />
+    <link rel="prev" title="Appendix" href="../index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="docker">
+<span id="id1"></span><h1>Docker<a class="headerlink" href="#docker" title="Permalink to this heading">¶</a></h1>
+<p>Cacao’s Robot contains 2 processor unit that is Intel NUC and a Jetson Xavier NX developer kit.
+Two processors have different objectives first Jetson Xavier NX developer kit using for running the machine learning models
+and Intel NUC using for Navigation.
+Both processors do not have the same python environment,
+therefore, Cacao’s team is building the docker images for executing software in the same environment as Cacao’s processor</p>
+<hr class="docutils" />
+<section id="jetson-xavier-docker-image">
+<h2>Jetson Xavier Docker Image<a class="headerlink" href="#jetson-xavier-docker-image" title="Permalink to this heading">¶</a></h2>
+<p>docker repository: <a class="reference external" href="https://hub.docker.com/repository/docker/thanachart29/jetson_athome">https://hub.docker.com/repository/docker/thanachart29/jetson_athome</a></p>
+<hr class="docutils" />
+<section id="jetson-xavier-package">
+<h3>Jetson Xavier package<a class="headerlink" href="#jetson-xavier-package" title="Permalink to this heading">¶</a></h3>
+<p>you can find all package at <a class="reference external" href="https://github.com/MBSE-2022-1/Software-Team/blob/docker/jetson_python_library.txt">https://github.com/MBSE-2022-1/Software-Team/blob/docker/jetson_python_library.txt</a></p>
+<p>requirement package included:</p>
+<ol class="arabic">
+<li><p>System</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>OS: ubuntu focal fossa 20.04.5 LTS</p></li>
+<li><p>Architecture: arm64/v8</p></li>
+<li><p>CUDA: 11.4</p></li>
+<li><p>Python 3.8.10</p></li>
+<li><p>Default work directory : /usr/app/src/cacao_ws</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Library</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ROS2-foxy-desktop</p></li>
+<li><p>PyTorch v1.11.0</p></li>
+<li><p>torchvision v0.12.0</p></li>
+<li><p>torchaudio v0.11.0</p></li>
+<li><p>TensorFlow 2.9.1</p></li>
+<li><p>Protobuf 3.19.4</p></li>
+<li><p>Numpy 1.23.1</p></li>
+<li><p>OpenCV 4.6.0.66</p></li>
+<li><p>PyYAML 5.3.1</p></li>
+<li><p>Pillow 9.2.0</p></li>
+<li><p>Request 2.28.1</p></li>
+<li><p>Tqdm 4.64.1</p></li>
+<li><p>Tensorboard 2.9.1</p></li>
+<li><p>Pandas 1.5.1</p></li>
+<li><p>Mediapipe 0.8.11</p></li>
+<li><p>SpeechRecognition 3.8.1</p></li>
+<li><p>pocketsphinx 0.1.15</p></li>
+<li><p>Pyaudio 0.2.11</p></li>
+<li><p>Pyttsx3 0.29</p></li>
+<li><p>Pybind11 2.10.0</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="line-block" id="id2">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="enabling-jetson-containers-on-an-x86-workstation-using-qemu-1">
+<h3>Enabling Jetson Containers on an x86 workstation (using qemu) [1]<a class="headerlink" href="#enabling-jetson-containers-on-an-x86-workstation-using-qemu-1" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install qemu binfmt-support qemu-user-static
+<span class="c1"># Check if the entries look good.</span>
+$ sudo cat /proc/sys/fs/binfmt_misc/status
+&gt;&gt; enabled
+<span class="c1"># See if /usr/bin/qemu-aarch64-static exists as one of the interpreters.</span>
+$ cat /proc/sys/fs/binfmt_misc/qemu-aarch64
+&gt;&gt; enabled
+&gt;&gt; interpreter /usr/bin/qemu-aarch64-static
+&gt;&gt; flags: OCF
+&gt;&gt; offset <span class="m">0</span>
+&gt;&gt; magic 7f454c460201010000000000000000000200b700
+&gt;&gt; mask ffffffffffffff00fffffffffffffffffeffffff
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unfortunately you won’t be able to run any binary that calls into the NVIDIA driver on the x86 host.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="inter-nuc-docker-image">
+<h2>Inter NUC Docker Image<a class="headerlink" href="#inter-nuc-docker-image" title="Permalink to this heading">¶</a></h2>
+<p>docker repository: <a class="reference external" href="https://hub.docker.com/repository/docker/thanachart29/nuc_athome">https://hub.docker.com/repository/docker/thanachart29/nuc_athome</a></p>
+<hr class="docutils" />
+<section id="inter-nuc-package">
+<h3>Inter NUC package<a class="headerlink" href="#inter-nuc-package" title="Permalink to this heading">¶</a></h3>
+<p>you can find all package at <a class="reference external" href="https://github.com/MBSE-2022-1/Software-Team/blob/docker/nuc_python_library.txt">https://github.com/MBSE-2022-1/Software-Team/blob/docker/nuc_python_library.txt</a></p>
+<p>requirement package included:</p>
+<ol class="arabic">
+<li><p>System</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>OS: ubuntu focal fossa 20.04.5 LTS</p></li>
+<li><p>Architecture: x86_64</p></li>
+<li><p>CUDA: 11.2</p></li>
+<li><p>Python 3.8.10</p></li>
+<li><p>Default work directory : /usr/app/src/cacao_ws</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Library</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ROS2-foxy-desktop</p></li>
+<li><p>PyTorch v1.11.0</p></li>
+<li><p>torchvision v0.12.0</p></li>
+<li><p>torchaudio v0.11.0</p></li>
+<li><p>TensorFlow 2.9.1</p></li>
+<li><p>Protobuf 3.19.6</p></li>
+<li><p>Numpy 1.23.1</p></li>
+<li><p>OpenCV 4.6.0.66</p></li>
+<li><p>PyYAML 5.3.1</p></li>
+<li><p>Pillow 9.2.0</p></li>
+<li><p>Request 2.28.1</p></li>
+<li><p>Tqdm 4.64.1</p></li>
+<li><p>Tensorboard 2.9.1</p></li>
+<li><p>Pandas 1.5.1</p></li>
+<li><p>Mediapipe 0.8.11</p></li>
+<li><p>SpeechRecognition 3.8.1</p></li>
+<li><p>pocketsphinx 0.1.15</p></li>
+<li><p>Pyaudio 0.2.11</p></li>
+<li><p>Pyttsx3 0.29</p></li>
+<li><p>Pybind11 2.10.0</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="using-docker-instruction">
+<h2>Using Docker Instruction<a class="headerlink" href="#using-docker-instruction" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>first of all, install Docker following the <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">Docker install manuals</a></p></li>
+<li><p>Pull docker images</p>
+<blockquote>
+<div><ul>
+<li><p>Jetson Xavier Images</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker pull thanachart29/jetson_athome:latest
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Intel NUC Images</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker pull thanachart29/nuc_athome:latest
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Run a command in a new containers</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run <span class="o">[</span>OPTIONS<span class="o">]</span> IMAGE <span class="o">[</span>COMMAND<span class="o">]</span> <span class="o">[</span>ARG...<span class="o">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Enable display from host: [OPTIONS] = –privileged –env DISPLAY=unix$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix</p></li>
+<li><p>Enable GPU from host: [OPTIONS] = –gpus all</p></li>
+<li><p>Enable audio from host: [OPTIONS] = –group-add audio</p></li>
+</ul>
+<p>For example</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --rm -it --privileged <span class="se">\</span>
+                    --env <span class="nv">DISPLAY</span><span class="o">=</span>unix<span class="nv">$DISPLAY</span> <span class="se">\</span>
+                    -v /tmp/.X11-unix:/tmp/.X11-unix <span class="se">\</span>
+                    –gpus all –group-add audio &lt;image name&gt;
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p>Run with bash command</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --rm -it &lt;image name&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>using –rm option for remove the container when it exits</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Execute scripts from local hosts to run inside container</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run -i &lt;image name&gt; &lt;python3, e.g.&gt; &lt; &lt;path to scripts&gt;
+</pre></div>
+</div>
+<p>OR</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run -itd &lt;image name&gt;
+docker <span class="nb">exec</span> -i &lt;container ID&gt; &lt;python3, e.g.&gt; &lt;  &lt;path to scripts&gt;
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Basically, run ros package in docker</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run -itd &lt;image name&gt;
+docker cp &lt;host file/directory&gt; &lt;container ID&gt;:&lt;container directory&gt;
+docker <span class="nb">exec</span> -itd &lt;container ID&gt; /bin/bash
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command will copy your directory to container and you can use terminal as superuser</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block" id="id3">
+<div class="line"><br /></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="using-nvidia-container-runtime-for-using-gpu-on-docker-2">
+<h2>Using Nvidia-container runtime (for using gpu on docker) [2]<a class="headerlink" href="#using-nvidia-container-runtime-for-using-gpu-on-docker-2" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Setting up docker</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://get.docker.com <span class="p">|</span> sh <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> sudo systemctl --now <span class="nb">enable</span> docker
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Setting up NVIDIA Container Toolkit</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">distribution</span><span class="o">=</span><span class="k">$(</span>. /etc/os-release<span class="p">;</span><span class="nb">echo</span> <span class="nv">$ID$VERSION_ID</span><span class="k">)</span> <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> curl -s -L https://nvidia.github.io/libnvidia-container/<span class="nv">$distribution</span>/libnvidia-container.list <span class="p">|</span> <span class="se">\</span>
+    sed <span class="s1">&#39;s#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g&#39;</span> <span class="p">|</span> <span class="se">\</span>
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Install the nvidia-docker2</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Restart the Docker daemon after   .. docker_rationale.rst
+.. jetson_docker.rst
+.. nuc_docker.rst
+.. docker_instruction.rst
+.. docker_reference.rst setting the default runtime:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl restart docker</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>(optional) tested by running a base CUDA container</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="#id2">[1]</a> : <a class="reference external" href="https://github.com/NVIDIA/nvidia-docker/wiki/NVIDIA-Container-Runtime-on-Jetson">https://github.com/NVIDIA/nvidia-docker/wiki/NVIDIA-Container-Runtime-on-Jetson</a></p>
+<p><a class="reference internal" href="#id3">[2]</a> : <a class="reference external" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html</a></p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CACAO@HOME Robot</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">CACAO'S Robot application</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../fabrication/index.html">Fabrication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../navigation/index.html">Navigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manipulation/index.html">Manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../perception/index.html">Perception</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Appendix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CACAO'S Software integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software_integration/index.html">Software Integration</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Appendix</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Appendix</a></li>
+      <li>Next: <a href="realsense.html" title="next chapter">Realsense camera</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022-2022, Cacao Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/appendix/docs/docker.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

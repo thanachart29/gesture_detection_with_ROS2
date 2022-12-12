@@ -79,17 +79,27 @@ The gesture detection function consist of image subscriber, extract image featur
 
   **Mediapipe**
 
-    the image feature is extracted by mediapipe library Mediapipe hand landmarks are composed of x, y, and z. x and y are normalized to [0.0, 1.0] by the image width and height respectively. z represents the landmark depth with the depth at the wrist being the origin, and the smaller the value the closer the landmark is to the camera. The magnitude of z uses roughly the same scale as x. The preprocessing function will set the wrist position as the origin point and then subtract the other 20 points from the origin point then normalize the position 
+  the image feature is extracted by mediapipe library Mediapipe hand landmarks are composed of x, y, and z. x and y are normalized to [0.0, 1.0] by the image width and height respectively. z represents the landmark depth with the depth at the wrist being the origin, and the smaller the value the closer the landmark is to the camera. The magnitude of z uses roughly the same scale as x. The preprocessing function will set the wrist position as the origin point and then subtract the other 20 points from the origin point then normalize the position 
 
-    See the reference API here: https://google.github.io/mediapipe/solutions/hands.html#python-solution-api
+  See the reference API here: https://google.github.io/mediapipe/solutions/hands.html#python-solution-api
 
 
   **preprocessing function**
 
-    .. rst:directive:: calc_landmark_list(self, landmarks)
-        
-      params landmarks:
-      return ee
+  .. rst:directive:: calc_landmark_list(self, landmarks)
+
+    :the example:
+
+      .. code-block:: bash
+
+        eieiza
+
+  .. rst:directive:: pre_process_landmark(self, landmark_list)
+    
+
+  .. rst:directive:: alc_bounding_rect(self, landmarks)
+
+
 
   **Classifier model architecture**
 
@@ -100,9 +110,9 @@ The gesture detection function consist of image subscriber, extract image featur
 
 |
 
-    Input: 42 length arrays
+  Input: 42 length arrays
 
-    Output: hand class ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
+  Output: hand class ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
 
 
 Problem and future plan

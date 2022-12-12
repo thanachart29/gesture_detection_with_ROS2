@@ -31,9 +31,9 @@ Architecture
 
     Tracking people and send their position to base_controller.py
 
-    **Topic**
+.. tabs::
 
-    Publish
+   .. tab:: Topic
 
         /goal_update[geometry_msgs/PoseStamped]
 
@@ -43,7 +43,7 @@ Architecture
 
             Publish status of the node (0=wait for command,1=running,2=succeed,-1=fail)
 
-    Subscribe
+   .. tab:: Subscribe
 
         /depth_camera/image_raw[sensor_msgs/Image]
 
@@ -57,15 +57,16 @@ Architecture
 
             Subscribe camera info from D455
 
-    Service
-
+   .. tab:: Service
+    
         /people_detection/enable[std_srvs/Empty]
 
-        Call when you want to enable publish tf tranfrom people position to rviz2
+            Call when you want to enable publish tf tranfrom people position to rviz2
 
         /people_detection/arrival[std_srvs/Empty]
         
-        Call when you want to tell the robot that you arrive at destination and stop tracking
+            Call when you want to tell the robot that you arrive at destination and stop tracking
+
 
 - **base_controller.py**
 

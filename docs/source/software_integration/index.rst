@@ -3,8 +3,6 @@
 Software Integration
 ######################
 
-Cacao's perception
-
 .. toctree::
    :maxdepth: 1
    

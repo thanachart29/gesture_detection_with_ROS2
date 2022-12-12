@@ -6,5 +6,7 @@ Manipulation
 Cacao's Manipulation
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+
+   docs/manipulation.rst
 

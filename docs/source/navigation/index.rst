@@ -3,8 +3,8 @@
 Navigation
 #################
 
-Cacao's perception
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
+   docs/navigation.rst

@@ -25,6 +25,8 @@ The purpose of gesture perceptual application for sensing human behavior, living
     :align: center
     :alt: ros2 system architecture
     
+  
+The gesture detection node consists of 2 services for calling from the behavior root node while the detect sequence is occurs
 
 Installation
 *************

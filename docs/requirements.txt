@@ -1,4 +1,3 @@
-sphinx-tabs
-sphinx-inline-tabs
 ipykernel
 nbsphinx
+sphinx-tabs

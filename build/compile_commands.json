@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/pumid/Desktop/athome/athome_ws/build",
+  "command": "/usr/bin/g++  -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -I/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/include -isystem /opt/ros/foxy/include  -g   -Wall -Wextra -Wpedantic -std=gnu++14 -o CMakeFiles/cpp_node_test.dir/src/cpp_node.cpp.o -c /home/pumid/Desktop/athome/athome_ws/src/gesture_detection/src/cpp_node.cpp",
+  "file": "/home/pumid/Desktop/athome/athome_ws/src/gesture_detection/src/cpp_node.cpp"
+}
+]

@@ -77,7 +77,6 @@ The gesture detection function consist of image subscriber, extract image featur
     :alt: Navigation2 Block Diagram
 
 Mediapipe
-""""""""""""
 
 the image feature is extracted by mediapipe library Mediapipe hand landmarks are composed of x, y, and z. x and y are normalized to [0.0, 1.0] by the image width and height respectively. z represents the landmark depth with the depth at the wrist being the origin, and the smaller the value the closer the landmark is to the camera. The magnitude of z uses roughly the same scale as x. The preprocessing function will set the wrist position as the origin point and then subtract the other 20 points from the origin point then normalize the position 
 
@@ -88,6 +87,7 @@ preprocessing function
 """"""""""""""""""""""""
 
 .. rst:directive:: calc_landmark_list(self, landmarks)
+
 
 >>> iloveu(test)
   params  landmarks: 
@@ -110,4 +110,41 @@ Output: hand class ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
 Problem and future plan
 *************************
 
-kiki
+\Gesture perception tasks on robocup@home
+
+- Task 5.1 carry my luggage
+
+    - Detect start command
+    - Detect pointing position
+
+- Task 5.3 Farewell
+
+    - Detect tired user
+    - Detect calling and signal to leave
+
+
+- Task 6.4 Hand Me That
+
+    - Detect pointing position
+
+
+- Task 6.6 Restaurant
+
+
+    - Detect calling and waving
+
+
+- Task 6.7 Smoothie Chef
+
+
+    - Learning how to prepare the smoothie and then follow
+
+
+- Task 6.8 Stickler for the Rules
+
+
+    - Identify rule breaker
+
+
+.. note:: This semester we are only planning for task 5.1
+

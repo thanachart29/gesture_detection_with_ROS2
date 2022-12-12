@@ -9,15 +9,12 @@
     <title>People Perception &#8212; CACAO@HOME Robot  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/tabs.js"></script>
     <script src="../../_static/tabs.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -61,9 +58,12 @@
 </li>
 </ul>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Topic</label><div class="tab-content docutils container">
-<p>/goal_update[geometry_msgs/PoseStamped]</p>
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Apples</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Pears</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Oranges</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Apples are green, or sometimes red.</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Pears are green.</p>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>Oranges are orange.</p>
+</div></div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Topic</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Subscribe</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Service</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>/goal_update[geometry_msgs/PoseStamped]</p>
 <blockquote>
 <div><p>Publish people position in xy coordinate relative to map to bt naigator for following dynamic object</p>
 </div></blockquote>
@@ -71,9 +71,7 @@
 <blockquote>
 <div><p>Publish status of the node (0=wait for command,1=running,2=succeed,-1=fail)</p>
 </div></blockquote>
-</div>
-<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Subscribe</label><div class="tab-content docutils container">
-<p>/depth_camera/image_raw[sensor_msgs/Image]</p>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>/depth_camera/image_raw[sensor_msgs/Image]</p>
 <blockquote>
 <div><p>Subscribe RGB image from D455</p>
 </div></blockquote>
@@ -85,9 +83,7 @@
 <blockquote>
 <div><p>Subscribe camera info from D455</p>
 </div></blockquote>
-</div>
-<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">Service</label><div class="tab-content docutils container">
-<p>/people_detection/enable[std_srvs/Empty]</p>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>/people_detection/enable[std_srvs/Empty]</p>
 <blockquote>
 <div><p>Call when you want to enable publish tf tranfrom people position to rviz2</p>
 </div></blockquote>
@@ -95,9 +91,7 @@
 <blockquote>
 <div><p>Call when you want to tell the robot that you arrive at destination and stop tracking</p>
 </div></blockquote>
-</div>
-</div>
-</div>
+</div></div>
 <ul>
 <li><p><strong>base_controller.py</strong></p>
 <blockquote>
@@ -106,15 +100,11 @@
 </li>
 </ul>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Topic</label><div class="tab-content docutils container">
-<p>/cmd_vel[geometry_msgs/Twist]</p>
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Topic</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Subscribe</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>/cmd_vel[geometry_msgs/Twist]</p>
 <blockquote>
 <div><p>Publish publist linear velocity and angular velocity of robot to wheel controller node</p>
 </div></blockquote>
-</div>
-<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Subscribe</label><div class="tab-content docutils container">
-<p>/goal_update[geometry_msgs/PoseStamped]</p>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>/goal_update[geometry_msgs/PoseStamped]</p>
 <blockquote>
 <div><p>Subscribe tracking position</p>
 </div></blockquote>
@@ -122,9 +112,7 @@
 <blockquote>
 <div><p>Subscribe status of people follower status(status 1 = follow otherwise stop)</p>
 </div></blockquote>
-</div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="concept-how-does-it-work">
 <h3>Concept(How does it work?)<a class="headerlink" href="#concept-how-does-it-work" title="Permalink to this heading">¶</a></h3>

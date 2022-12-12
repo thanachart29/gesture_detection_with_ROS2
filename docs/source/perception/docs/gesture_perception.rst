@@ -9,6 +9,11 @@ Gesture Perception
    :autoplay:
    :nocontrols:
 
+.. image:: ./images/gesture_diagram.png
+    :width: 700px
+    :align: center
+    :alt: Navigation2 Block Diagram
+
 Overview
 **********
 

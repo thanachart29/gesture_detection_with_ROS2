@@ -27,8 +27,8 @@ sphinx:
 python:
   version: 3
   install:
-    - requirements: docs/requirements.txt
-  system_packages: true
+      - method: pip
+        path: .
   
 # Optionally declare the Python requirements required to build your docs
 #python:

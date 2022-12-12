@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf
 import os
 print("This module is in {}" .format(os.path.dirname(os.path.realpath(__file__))))
+print("Your are using Tensorflow library")
 
 class KeyPointClassifier(object):
     def __init__(self, model_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "new_keypoint_classifier.tflite")):

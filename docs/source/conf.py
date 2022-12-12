@@ -8,6 +8,9 @@ project = "CACAO@HOME Robot"
 author = "Cacao Team"
 copyright = f"2022-{datetime.date.today().year}, {author}"
 
+extensions = [
+    'sphinxcontrib.video'
+]
 
 master_doc = "index"
 language = 'en'

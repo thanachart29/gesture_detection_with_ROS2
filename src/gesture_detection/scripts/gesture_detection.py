@@ -24,7 +24,7 @@ class GestureDetection(Node):
     def __init__(self):
         super().__init__('gesture_detection')
         self.subscription = self.create_subscription(Image, '/camera/color/image_raw', self.getImgCallback, 10)
-        self.pointclound = self.create_subscription(PointCloud2, '/camera/depth/color/points', self.getPointCloundCallback, 10)
+        # self.pointclound = self.create_subscription(PointCloud2, '/camera/depth/color/points', self.getPointCloundCallback, 10)
         self.timer = self.create_timer(0.1, self.timer_callback)
         ##### first task detect start command #####
         self.started_publisher = self.create_publisher(Int8,'/detect_start_cmd/detected',10)
@@ -49,15 +49,15 @@ class GestureDetection(Node):
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands(static_image_mode=False,
                                          max_num_hands=1,
-                                         min_detection_confidence=0.7,
+                                         min_detection_confidence=0.5,
                                          min_tracking_confidence=0.5,)
         ##### initial model
         # self.keypoint_classifier = CoralKeyPointClassifier()
-        self.keypoint_classifier = KeyPointClassifier
+        self.keypoint_classifier = KeyPointClassifier()
         self.keypoint_classifier_labels = ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
         self.cvFpsCalc = CvFpsCalc(buffer_len=10)
         self.fps_que = deque(maxlen=60)
-        self.hand_sign_que = deque(maxlen=30)
+        self.hand_sign_que = deque(maxlen=60)
         self.imgEnable = False
 
 
@@ -76,7 +76,7 @@ class GestureDetection(Node):
         self.img = cv.resize(self.img, [960, 540])
         self.img = cv.flip(self.img, 1)
         self.cp_img = copy.deepcopy(self.img)
-        self.img = cv.cvtColor(self.img, cv.COLOR_BGR2RGB)
+        # self.img = cv.cvtColor(self.img, cv.COLOR_BGR2RGB)
         self.imgEnable = True
         self.fps = self.cvFpsCalc.get()
         self.fps_que.append(self.fps)
@@ -116,14 +116,14 @@ class GestureDetection(Node):
                     print(Counter(self.hand_sign_que))
                     print(Counter(self.hand_sign_que)[1])
     
-                    if (Counter(self.hand_sign_que))[1] == 30:
+                    if(((Counter(self.hand_sign_que))[1] == 60)):
                         self.hand_sign_que.clear()
                         if(self.enable_detect_start_cmd == True):
                             self.detect_start_cmd_status.data = 1
                             self.enable_detect_start_cmd = False
                             cv.destroyAllWindows()
                         print('found started command')
-                    elif (Counter(self.hand_sign_que))[2] == 30:
+                    elif (Counter(self.hand_sign_que))[2] == 60:
                         self.hand_sign_que.clear()
                         if(self.enable_detect_pointed == True):
                             self.detect_pointed_status.data = 1
@@ -133,7 +133,7 @@ class GestureDetection(Node):
                     else:
                         self.detect_start_cmd_status.data = 0
                         self.detect_pointed_status.data = 0
-                    ##### disply #####
+            #         ##### disply #####
                     self.mp_drawing.draw_landmarks( self.cp_img, 
                                                     hand_landmarks, 
                                                     self.mp_hands.HAND_CONNECTIONS,
@@ -151,8 +151,9 @@ class GestureDetection(Node):
                     cv.putText(self.cp_img, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
             cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
             cv.putText(self.cp_img, "FPS:" + str(self.fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
-            cv.imshow('Raw Webcam Feed', self.cp_img)
-            cv.waitKey(1)
+        self.cp_img = cv.cvtColor(self.cp_img, cv.COLOR_RGB2BGR)
+        cv.imshow('Raw Webcam Feed', self.cp_img)
+        cv.waitKey(1)
 
     def calc_landmark_list(self, landmarks):
         image_width, image_height = self.cp_img.shape[1], self.cp_img.shape[0]

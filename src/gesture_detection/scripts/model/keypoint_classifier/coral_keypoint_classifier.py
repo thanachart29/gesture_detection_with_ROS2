@@ -4,6 +4,7 @@ import numpy as np
 import sys
 import os
 print("This module is in {}" .format(os.path.dirname(os.path.realpath(__file__))))
+print(("You are using google coral library"))
 from pycoral.utils.edgetpu import make_interpreter
 # import tensorflow as tf
 

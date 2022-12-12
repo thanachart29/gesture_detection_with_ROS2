@@ -88,11 +88,15 @@ The gesture detection function consist of image subscriber, extract image featur
 
   .. rst:directive:: calc_landmark_list(self, landmarks)
 
-    :the example:
+    :parameters:
 
       .. code-block:: bash
 
         eieiza
+
+    :return:
+
+      list of fucking shit
 
   .. rst:directive:: pre_process_landmark(self, landmark_list)
     

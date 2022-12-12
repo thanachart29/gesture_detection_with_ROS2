@@ -33,11 +33,14 @@ The developed behavior tree's structure is divided into three major parts: the r
 |
 |
 
-.. image:: ./images/sysint_b.png
+.. figure:: ./images/sysint_b.png
     :width: 480
     :align: center
     :alt: behav_nod_relation
 
+    Fig. b explain correlation of  behavior class and subsystem node
+
+|
 
 Installation
 *************

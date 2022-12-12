@@ -3,10 +3,6 @@
 Software Integration
 #####################
 
-
-Overview
-**********
-
 .. raw:: html
 
     <h1 align="center">
@@ -17,16 +13,25 @@ Overview
       </div>
     </h1>
 
+
+Overview
+**********
+
 The software integration path was created to integrate all of the subsystems and control the robot's behavior throughout its work in order for it to be correct, followed by a user story. The behavior can be induced by defining conditions in subsystems. 
 
 Software integration uses behavior trees to create each behavior and make decisions about the robot’s behavior. The first draft of the project uses py_tree and py_tree_ros, Python implementations of behavior trees, to manage the behaviors of the robot. More information about py_tree can be found at https://py-trees.readthedocs.io/en/devel/.
 
 The developed behavior tree's structure is divided into three major parts: the root tree, behaviors classes, and subsystem nodes. The root tree was used to create the behavioral flow and call behaviors of the robot. The diagram below (Fig. a) shows the behavior flow of the robot's first draft. Behaviors classes are used to start subsystem nodes with service and receive status feedback from subsystem nodes. The diagram below (Fig. b) will explain correlation of  behavior class and subsystem node.
 
-.. image:: ./images/sysint_a.png
+.. figure:: ./images/sysint_a.png
     :width: 480
     :align: center
     :alt: behavior_flow
+
+    Fig. a shows the behavior flow
+
+|
+|
 
 .. image:: ./images/sysint_b.png
     :width: 480
@@ -90,7 +95,7 @@ Example
 
 - Setup hardware
 
-    - Camera
+  1. Camera
 
         .. code-block:: bash
 
@@ -99,8 +104,7 @@ Example
                     depth_module.profile:=640x480x30 \
                     pointcloud.enable:=true
 
-
-	- Wheel odometry
+  2. Wheel odometry
 
         .. code-block:: bash
 
@@ -119,11 +123,6 @@ Example
     .. code-block:: bash
         
         ros2 run integrate_system root.py
-
-
-API Reference
-***************
-
 
 Problem and future plan
 *************************

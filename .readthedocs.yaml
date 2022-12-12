@@ -23,17 +23,14 @@ submodules:
 sphinx:
    configuration: docs/source/conf.py
 
-
-python:
-  version: 3
-  install:
-      - method: pip
-        path: .
-
-formats:
-  - pdf
   
 # Optionally declare the Python requirements required to build your docs
 #python:
 #   install:
 #   - requirements: docs/requirements.txt
+
+python:
+  version: 3
+  install:
+    - requirements: docs/requirements.txt
+  system_packages: true

@@ -8,7 +8,7 @@ Gesture Perception
     <h1 align="center">
       <div>
         <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/4Jl3G3RK47c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="480" height="270" src="https://www.youtube.com/embed/4Jl3G3RK47c" allowfullscreen></iframe>
         </div>
       </div>
     </h1>

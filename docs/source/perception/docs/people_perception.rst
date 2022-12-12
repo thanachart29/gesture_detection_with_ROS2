@@ -32,55 +32,39 @@ Architecture
     Tracking people and send their position to base_controller.py
 
 
-.. tabs::
+::
 
-   .. tab:: Apples
+   Topic:
 
-      Apples are green, or sometimes red.
-
-   .. tab:: Pears
-
-      Pears are green.
-
-   .. tab:: Oranges
-
-      Oranges are orange.
-
-
-
-.. tabs::
-
-   .. tab:: Topic
-
-        /goal_update[geometry_msgs/PoseStamped]
+        - /goal_update[geometry_msgs/PoseStamped]
 
             Publish people position in xy coordinate relative to map to bt naigator for following dynamic object
 
-        /people_detection/status[std_msgs/Uint8]
+        - /people_detection/status[std_msgs/Uint8]
 
             Publish status of the node (0=wait for command,1=running,2=succeed,-1=fail)
 
-   .. tab:: Subscribe
+    Subscribe:
 
-        /depth_camera/image_raw[sensor_msgs/Image]
+        - /depth_camera/image_raw[sensor_msgs/Image]
 
             Subscribe RGB image from D455
 
-        /depth_camera/depth/image_raw[sensor_msgs/Image]
+        - /depth_camera/depth/image_raw[sensor_msgs/Image]
 
             Subscribe depth image from D455
 
-        /depth_camera/depth/camera_info[sensor_msgs/CameraInfo]
+        - /depth_camera/depth/camera_info[sensor_msgs/CameraInfo]
 
             Subscribe camera info from D455
 
-   .. tab:: Service
+    Service:
     
-        /people_detection/enable[std_srvs/Empty]
+        - /people_detection/enable[std_srvs/Empty]
 
             Call when you want to enable publish tf tranfrom people position to rviz2
 
-        /people_detection/arrival[std_srvs/Empty]
+        - /people_detection/arrival[std_srvs/Empty]
         
             Call when you want to tell the robot that you arrive at destination and stop tracking
 
@@ -89,21 +73,21 @@ Architecture
 
     Recieve position from people_detection_scripts.py and compute wheel effort to control actuator for people following
 
-.. tabs::
+::
 
-   .. tab:: Topic
+    Topic:
 
-        /cmd_vel[geometry_msgs/Twist]
+        - /cmd_vel[geometry_msgs/Twist]
 
             Publish publist linear velocity and angular velocity of robot to wheel controller node
 
-   .. tab:: Subscribe
+    Subscribe:
 
-        /goal_update[geometry_msgs/PoseStamped]
+        - /goal_update[geometry_msgs/PoseStamped]
 
             Subscribe tracking position
             
-        /people_detection/status[std_msgs/Uint8]
+        - /people_detection/status[std_msgs/Uint8]
 
             Subscribe status of people follower status(status 1 = follow otherwise stop)
 

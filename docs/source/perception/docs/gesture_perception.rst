@@ -77,6 +77,10 @@ API Reference
 The gesture detection function consist of image subscriber, extract image feature, preprocessing and classifier model
 
 
+test
+=============
+
+
   **Mediapipe**
 
   the image feature is extracted by mediapipe library Mediapipe hand landmarks are composed of x, y, and z. x and y are normalized to [0.0, 1.0] by the image width and height respectively. z represents the landmark depth with the depth at the wrist being the origin, and the smaller the value the closer the landmark is to the camera. The magnitude of z uses roughly the same scale as x. The preprocessing function will set the wrist position as the origin point and then subtract the other 20 points from the origin point then normalize the position 
@@ -89,19 +93,32 @@ The gesture detection function consist of image subscriber, extract image featur
   .. rst:directive:: calc_landmark_list(self, landmarks)
 
     :parameters:
-
-      .. code-block:: bash
-
-        eieiza
+      
+      eieiza
 
     :return:
-
+    
       list of fucking shit
 
   .. rst:directive:: pre_process_landmark(self, landmark_list)
-    
 
-  .. rst:directive:: alc_bounding_rect(self, landmarks)
+    :parameters:
+      
+      eieiza
+
+    :return:
+    
+      list of fucking shit
+
+  .. rst:directive:: calc_bounding_rect(self, landmarks)
+
+    :parameters:
+      
+      eieiza
+
+    :return:
+    
+      list of fucking shit
 
 
 

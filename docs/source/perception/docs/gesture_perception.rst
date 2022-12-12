@@ -68,6 +68,15 @@ Example
 
       ros2 run gesture_detection gesturedetection.py
 
+- Open realsense camera
+
+    .. code-block:: bash
+
+        ros2 launch realsense2_camera rs_launch.py \
+                    rgb_camera.profile:=640x480x30 \
+                    depth_module.profile:=640x480x30 \
+                    pointcloud.enable:=true
+
 - Call service
 
     .. code-block:: bash
@@ -121,13 +130,15 @@ The gesture detection function consist of image subscriber, extract image featur
 
   .. rst:directive:: calc_bounding_rect(self, landmarks)
 
+    this function calculates the landmarks from mediapipe for the bounding box for debugging with the image
+
     :parameters:
       
-      eieiza
+      landmarks: normalize hand landmarks from the result of mediapipe
 
     :return:
     
-      list of fucking shit
+      [x, y, x + w, y + h] respectively to the image size
 
 
 

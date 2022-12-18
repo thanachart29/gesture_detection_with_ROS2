@@ -1,0 +1,35 @@
+camera publishing rate is 60 hz
+
+each node using 10% CPU and 300 MB memory
+
+the cpu usage in following list will include realsense2 node
+1 node process with 53 fps using 13% cpu
+2 node process with 43 fps using 23% cpu
+3 node process with 40 fps using 32% cpu
+4 node process with 34 fps using 40% cpu
+5 node process with 30 fps using 48% cpu
+6 node process with 28 fps using 57% cpu
+7 node process with 25 fps using 67% cpu
+8 node process with 21 fps using 68% cpu
+9 node process with 18 fps using 76% cpu
+10 node process with 16 fps using 75% cpu 
+11 node process with 14 fps using 82% cpu
+12 node process with 13 fps using 82% cpu
+13 node process with 11 fps using 83% cpu
+14 node process with 10 fps using 86% cpu
+15 node process with 9 fps using 86% cpu
+16 node process with 9 fps using 86% cpu
+17 node process with 8 fps using 90% cpu
+18 node process with 7 fps using 95% cpu
+19 node process with 7 fps using 100% cpu
+20 node process with 7 fps using 100% cpu
+
+after open 3 node each node using 9% cpu and still using 300 MB memory
+when open 7 node each node not using constant cpu percentage its vary from 8 to 9 percentage
+when open 8 node each node completely using 8% cpu and realsense camera node using 4% cpu
+when open 10 node each node completely using 7% cpu and the realsense camera node using 5% cpu
+when open 13 node each node completely using 6% cpu but the realsense camera node still using 5% cpu
+
+when open 16 node each node completely using 5% cpu but the realsense camera node still using 5% cpu
+
+when open 20 node each node not using comsntant cpu percentage its vary from 4 to 5 percentage

@@ -157,6 +157,9 @@ The gesture detection function consist of image subscriber, extract image featur
   Output: hand class ['Open', 'Start_cmd', 'Pointer', 'Close', 'OK']
 
 
+Subsystem Verification
+************************
+
 Problem and future plan
 *************************
 

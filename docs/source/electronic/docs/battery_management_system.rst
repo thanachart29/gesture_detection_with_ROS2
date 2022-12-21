@@ -40,8 +40,6 @@ This battery management system comes from a combination of the original battery 
 
     From voltage level selection, we will use a 24V battery with 62.625A supply current at full operation. If we need to use this robot for 3 hours, we will use battery at least 
 
-.. rst-class:: center
-
     Capacity = Current  hours of use = 62.625  3 = 187.875 Ah
 
 .. note:: In this project, we use a custom battery of 220Ah capacity because of store production restrictions. 

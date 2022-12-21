@@ -138,7 +138,7 @@ System Architecture
    pages/summary
 
 Links
-######
+********
 
 * Source code 1: https://github.com/MBSE-2022-1/Firmware-Team
 * Source code 2: https://github.com/VeroAlfa/firmware

@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-MBSE-2022-1/Firmware-Team Documentation
-=======================================
+Firmware
+==========
 **MEMBERS**
 
 #. Nattapat Jatuwong   63340500011 (Mobile Robot)
@@ -54,38 +54,38 @@ System Architecture
 -------------------
 - **Firmware Architecture**
 
-   .. image:: /images/firmware_architecture.png
+   .. image:: ./images/firmware_architecture.png
 
   * Hardwares and Connection
   
-    + :doc:`Microcontroller </pages/microcontroller>`
-    + :doc:`Hub Motor and Driver </pages/hub-motor-and-driver>`
-    + :doc:`IMU Sensor </pages/imu-sensor>`
+    + :doc:`Microcontroller <./pages/microcontroller>`
+    + :doc:`Hub Motor and Driver <./pages/hub-motor-and-driver>`
+    + :doc:`IMU Sensor <./pages/imu-sensor>`
 
   * Microcontroller Subsystem
 
-    + :doc:`Hub Motor Interface </pages/hub-motor-interface>`
-    + :doc:`IMU Interface </pages/imu-interface>`
-    + :doc:`Wheel Velocity Estimation </pages/wheel-velocity-estimation>`
-    + :doc:`Forward Kinematics </pages/forward-kinematics>`
-    + :doc:`Inverse Kinematics </pages/inverse-kinematics>`
-    + :doc:`Wheel Odematry Computation </pages/wheel-odometry-computation>`
-    + :doc:`ROS2 Interface </pages/ros2-interface>`
+    + :doc:`Hub Motor Interface <./pages/hub-motor-interface>`
+    + :doc:`IMU Interface <./pages/imu-interface>`
+    + :doc:`Wheel Velocity Estimation <./pages/wheel-velocity-estimation>`
+    + :doc:`Forward Kinematics <./pages/forward-kinematics>`
+    + :doc:`Inverse Kinematics <./pages/inverse-kinematics>`
+    + :doc:`Wheel Odematry Computation <./pages/wheel-odometry-computation>`
+    + :doc:`ROS2 Interface <./pages/ros2-interface>`
 
 .. _ros2Arc:
 
 - **ROS2 Architecture**
 
-   .. image:: /images/ros2_architecture.png
+   .. image:: ./images/ros2_architecture.png
       
-  * :doc:`ROS2 Setup </pages/ros2-setup>`
+  * :doc:`ROS2 Setup <./pages/ros2-setup>`
   
     + Calibration and xicro installation
     + Microcontroller port check
   
-  * :doc:`Xicro Package </pages/xicro-package>`
-  * :doc:`Calibration Package </pages/calibration-package>`
-  * :doc:`Steps to open ROS2 nodes </pages/step-to-open>`
+  * :doc:`Xicro Package <./pages/xicro-package>`
+  * :doc:`Calibration Package <./pages/calibration-package>`
+  * :doc:`Steps to open ROS2 nodes <./pages/step-to-open>`
 
 .. toctree::
    :maxdepth: 3

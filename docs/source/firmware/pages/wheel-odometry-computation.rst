@@ -5,17 +5,17 @@ Wheel Odometry Computation
 Odometry Update
 ---------------
 
-.. image:: /images/odomframe.png
+.. image:: ./images/odomframe.png
     :height: 336
     :width: 366
     :align: center
 
-.. image:: /images/wheel_odometry.png
+.. image:: ./images/wheel_odometry.png
     :height: 263
     :width: 516
     :align: center 
 
-.. image:: /images/odometry_matrix.png
+.. image:: ./images/odometry_matrix.png
     :align: center 
 
 Implemention (Core M7)

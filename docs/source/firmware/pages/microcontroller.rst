@@ -21,4 +21,4 @@ Why STM32H745ZI?
 NUCLEO-H745ZI-Q
 ---------------
 
-.. image:: /images/nucleo-h745zi-q.jpg
+.. image:: ./images/nucleo-h745zi-q.jpg

@@ -8,7 +8,7 @@ angular velocty and orientation. The sensor that we're using is BNO055 Absolute 
 BNO055
 ------
 
-.. image:: /images/bno055.jpg
+.. image:: ./images/bno055.jpg
 
 This is 9-DOF sensor including an accelerometer, gyroscope and magnetometer that has its own processor to perform
 sensor fusion algorithms. They blends accelerometer, magnetometer and gyroscope data into stable three-axis orientation 

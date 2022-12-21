@@ -5,7 +5,7 @@ Wheel Odometry
 Related Subsystem
 -----------------
 
-.. image:: /images/odometry_test.png
+.. image:: ./images/odometry_test.png
     :align: center
 
 Objective

@@ -12,7 +12,7 @@ Firmware-Team is using ZLTECH's hub motor and driver provided by Aj.Pi for both 
 ZLLG65ASM250-4096 V2.0
 ----------------------
 
-.. image:: /images/hubmotor.jpg
+.. image:: ./images/hubmotor.jpg
     :height: 400
     :width: 400
     :align: center
@@ -20,7 +20,7 @@ ZLLG65ASM250-4096 V2.0
 `ZLLG65ASM250-4096 V2.0 <http://zlrobotmotor.com/info/383.html>`_ is a ZLTECH's servo hub motor with an built-in encoder 
 specially designed for mobile robot application and also powered by 24-48 VDC. Here is some specification of this hub motor
 
-.. image:: /images/hubmotor_spec.jpg
+.. image:: ./images/hubmotor_spec.jpg
     :height: 497
     :width: 375
     :align: center
@@ -37,7 +37,7 @@ specially designed for mobile robot application and also powered by 24-48 VDC. H
 ZLAC706-CAN
 -----------
 
-.. image:: /images/motor_driver.png
+.. image:: ./images/motor_driver.png
     :height: 402
     :width: 516
     :align: center

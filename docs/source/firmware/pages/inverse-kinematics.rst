@@ -5,12 +5,12 @@ Inverse Kinematics
 Inverse Velocity Kinematics
 ---------------------------
 
-.. image:: /images/inverse_kinematics.png
+.. image:: ./images/inverse_kinematics.png
     :height: 175
     :width: 359
     :align: center
 
-.. image:: /images/inverse_matrix.png
+.. image:: ./images/inverse_matrix.png
     :height: 246
     :width: 472  
     :align: center

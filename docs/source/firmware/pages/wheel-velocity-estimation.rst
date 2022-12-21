@@ -5,50 +5,50 @@ Wheel Velocity Estimation
 Kalman Filter Algorithms
 ------------------------
 
-.. image:: /images/kalman.png
+.. image:: ./images/kalman.png
     :align: center
 
 Kinematics Base Model
 ----------------------
 Assumption: Zero mean gaussian jerk
 
-.. image:: /images/zeromeangaussian.png
+.. image:: ./images/zeromeangaussian.png
     :height: 173
     :width: 578
     :align: center
-.. image:: /images/kalman_states.png
+.. image:: ./images/kalman_states.png
     :height: 195
     :width: 434
     :align: center
-.. image:: /images/kalman_process.png
+.. image:: ./images/kalman_process.png
     :align: center
-.. image:: /images/kalman_A.png
+.. image:: ./images/kalman_A.png
     :height: 124
     :width: 457
     :align: center
-.. image:: /images/kalman_B.png
+.. image:: ./images/kalman_B.png
     :height: 102
     :width: 340
     :align: center
-.. image:: /images/kalman_UG.png
+.. image:: ./images/kalman_UG.png
     :height: 129
     :width: 236
     :align: center
-.. image:: /images/kalman_sensor.png
+.. image:: ./images/kalman_sensor.png
     :height: 128
     :width: 620
     :align: center
-.. image:: /images/kalman_C.png
+.. image:: ./images/kalman_C.png
     :height: 67
     :width: 382
     :align: center
-.. image:: /images/kalman_QR.png  
+.. image:: ./images/kalman_QR.png  
     :align: center
 
 Matrix Summary
 --------------
 
-.. image:: /images/kalman_summary.png
+.. image:: ./images/kalman_summary.png
     :height: 461
     :width: 521
     :align: center
@@ -56,7 +56,7 @@ Matrix Summary
 Kalman Output
 -------------
 
-.. image:: /images/kalman_output.png
+.. image:: ./images/kalman_output.png
     :height: 444
     :width: 588
     :align: center

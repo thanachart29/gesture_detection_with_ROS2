@@ -9,7 +9,7 @@ STM32 Process Timing
 * Core M4 Runtime: 2+2 = **4 ms**
 * Sampling frequency: **100 Hz**
 
-.. image:: /images/stm32_timing.png
+.. image:: ./images/stm32_timing.png
     :align: center
 
 ROS2 Publish Timing
@@ -18,5 +18,5 @@ ROS2 Publish Timing
 * Topic: /wheel/odometry **(Rate: 100 Hz)**
 * Topic: /imu/data **(Rate: 100 Hz)**
 
-.. image:: /images/publish_time.png
+.. image:: ./images/publish_time.png
     :align: center

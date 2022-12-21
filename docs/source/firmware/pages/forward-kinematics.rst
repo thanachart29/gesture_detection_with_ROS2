@@ -5,7 +5,7 @@ Forward Kinematics
 Forward Velocity Kinematics
 ---------------------------
 
-.. image:: /images/forward_kinematics.png
+.. image:: ./images/forward_kinematics.png
     :height: 505
     :width: 495
     :align: center
@@ -13,7 +13,7 @@ Forward Velocity Kinematics
 Covariance Matrix of 2D-Twist
 -----------------------------
 
-.. image:: /images/twist_covariance.png
+.. image:: ./images/twist_covariance.png
     :height: 493
     :width: 440 
     :align: center

@@ -21,7 +21,7 @@ Code Overview
 For control gripper, Joint Mode is enable because it can control gripper to close and open in range of gripper available 
 position as below picture
 
-.. image:: /images/gripper_algorithm.png
+.. image:: ./images/gripper_algorithm.png
     :align: center
 
 Gripper control can interface by boolean input.if boolean value is True, gripper will close. The gripper can detect an object by 

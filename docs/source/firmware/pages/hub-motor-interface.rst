@@ -8,14 +8,14 @@ CAN communication is the method of communication where devices act as nodes comp
 ZLAC706-CAN act as 1 node but STM32H745ZI only act as Host and CAN Controller. So we need additional transceiver connect at the 
 output of fdcan port to perform 1 node. The baudrate of CAN is also ranged from 500 kHz to 1 MHz
 
-.. image:: /images/can_connection.png
+.. image:: ./images/can_connection.png
     :align: center
 
 Hub Motor Driver Connection
 ---------------------------
 Here's the KiCad schematic of hub motor driver including STM32H745ZI fdcan port, can transceiver, can bus and hub motor.
 
-.. image:: /images/can_schematic.png
+.. image:: ./images/can_schematic.png
     :align: center
 
 STM32 FDCAN Specification

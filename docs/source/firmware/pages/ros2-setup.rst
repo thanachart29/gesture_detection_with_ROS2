@@ -87,7 +87,7 @@ After connect your microcontroller to ROS2 via usb port, run the following comma
 
 You can now see that microcontroller stlink's path is ``/dev/ttyACM0``.
 
-.. image:: /images/mcudevpath.png
+.. image:: ./images/mcudevpath.png
     :height: 206
     :width: 493
     :align: center

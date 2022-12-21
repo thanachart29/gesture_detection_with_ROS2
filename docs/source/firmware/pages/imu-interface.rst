@@ -19,36 +19,36 @@ We will use STM32CubeIDE to use BNO055 and send values ​​on ROS2 by followin
 #. Create an STM32CubeIDE Project with board selected as NUCLEO-H745ZI-Q and set the file to C
 #. TIM1 and I2C1 pins are enabled with the following settings.
 
-    .. image:: /images/imu_interface1.png
+    .. image:: ./images/imu_interface1.png
         :align: center
-    .. image:: /images/imu_interface2.png
+    .. image:: ./images/imu_interface2.png
         :align: center
-    .. image:: /images/imu_interface3.png
+    .. image:: ./images/imu_interface3.png
         :align: center
-    .. image:: /images/imu_interface4.png
+    .. image:: ./images/imu_interface4.png
         :align: center
-    .. image:: /images/imu_interface5.png
+    .. image:: ./images/imu_interface5.png
         :align: center
-    .. image:: /images/imu_interface6.png
+    .. image:: ./images/imu_interface6.png
         :align: center
-    .. image:: /images/imu_interface7.png
+    .. image:: ./images/imu_interface7.png
         :align: center
-    .. image:: /images/imu_interface8.png
+    .. image:: ./images/imu_interface8.png
         :align: center
 
 #. Generate code from IOC
 #. Place the bno055.c file in the Src folder, bno055.h, bno055_stm32.h in Inc folder
 
-    .. image:: /images/imu_interface9.png
+    .. image:: ./images/imu_interface9.png
         :align: center
 
 #. Within main.c can be written and within file bno055_stm32.h delete the line #include "i2c.h" (will not delete if STM32 Project Generate Peripheral file comes out or we check the option as below picture in .ioc file)
 
-    .. image:: /images/imu_interface10.png
+    .. image:: ./images/imu_interface10.png
         :align: center
     
 #. Build and Upload to board
-#. Continue in :doc:`/pages/ros2-interface`
+#. Continue in :doc:`./ros2-interface`
 
 Implemention (Core M7)
 ----------------------

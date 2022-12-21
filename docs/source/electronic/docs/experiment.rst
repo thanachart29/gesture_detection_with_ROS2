@@ -87,11 +87,11 @@ From calculation, we know total load when robot operate at standby load. So we d
 
 .. math:: 
 
-    Power consumptions(P_{cons}) = Current per hour \times Voltage = 2.5 \times 27.72 = 69.3 Wh
-    Operating time = 4 hours: power = P_{cons} \times Opt.time = 69.3 \times 4 = 277.2 w
-    battery power capacity (P_{init}) = Voltage \times capacity = 27.72 \times 220 = 6098.4 Wh
-    When using battery: remaining power = P_{init} - P_{cons} = 6098.4 - 277.2 = 581.2 Wh
-    Final voltage = \frac{remaining power}{capacity} = \frac{5821.2}{220} = 26.46 V
+    Power consumptions(P_{cons}) &= Current per hour \times Voltage = 2.5 \times 27.72 = 69.3 Wh \\
+    Operating time = 4 hours: power &= P_{cons} \times Opt.time = 69.3 \times 4 = 277.2 w \\
+    battery power capacity (P_{init}) &= Voltage \times capacity = 27.72 \times 220 = 6098.4 Wh \\
+    When using battery: remaining power &= P_{init} - P_{cons} = 6098.4 - 277.2 = 581.2 Wh \\
+    Final voltage &= \frac{remaining power}{capacity} = \frac{5821.2}{220} = 26.46 V \\
 
 
 Charging Load Testing

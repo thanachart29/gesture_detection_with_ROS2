@@ -50,8 +50,8 @@ This battery management system comes from a combination of the original battery 
 
     .. math:: 
 
-        Discharge rate = \frac{supply current}{capacity} = 62.625187.875 = 0.33 C \\
-        Charge rate = \frac{1}{charging time} = 16 = 0.17 C
+        Discharge_rate &= \frac{supply_current}{capacity} = 62.625187.875 = 0.33 C \\
+        Charge_rate &= \frac{1}{charging_time} = 16 = 0.17 C
 
     In terms of robot usage and its application, it makes us choose to use NMC batteries (Lithium Nickel Manganese Cobalt Oxide Batteries) because NMC batteries have a high specific energy or power. This limitation of either ‘energy’ or ‘power’ makes them more common for use in power tools or electric vehicles. (Specific power is power per unit mass, and specific energy is energy content per unit mass.) 
 
@@ -73,7 +73,7 @@ This battery management system comes from a combination of the original battery 
 
     From voltage level selection, we need to use a 24V battery as nominal voltage. So, The number  of cells of the battery is
 
-    .. math:: Number of cells = \frac{Battery pack voltage}{nominal cell voltage}=243.5=6.86 =7 cells 
+    .. math:: Number_of_cells = \frac{Battery_pack_voltage}{nominal_cell_voltage}=243.5=6.86 =7 cells 
 
 Summary :
 

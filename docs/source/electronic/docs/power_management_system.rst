@@ -28,8 +28,8 @@ The battery supplies voltage 24 VDC to the terminal at the base section then for
 
     .. math:: 
 
-        P = VI \\
-        I = \frac{P}{V} = \frac{350}{24} = 14.58 Amp
+        P &= VI \\
+        I &= \frac{P}{V} = \frac{350}{24} = 14.58 Amp
 
     At the max power 350 W we calculated current at 15 Amps. As a result, we select a circuit breaker CB16 that can resist current 15 Amps when the circuit is short.
 
@@ -75,8 +75,8 @@ From the base section give voltage 24 VDC to the body section. This section will
 
         .. math:: 
 
-            P_{out} = 510 W \\
-            P_{in} = P_{out} \times \frac{100}{eff.} = 510 \times \frac{100}{92} = 544.35 W \\
-            I = \frac{P}{V} = \frac{544.35}{24} = 22.68 A
+            P_{out} &= 510 W \\
+            P_{in} &= P_{out} \times \frac{100}{eff.} = 510 \times \frac{100}{92} = 544.35 W \\
+            I &= \frac{P}{V} = \frac{544.35}{24} = 22.68 A
 
     - Spare

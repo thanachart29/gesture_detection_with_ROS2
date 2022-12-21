@@ -58,11 +58,11 @@ If the battery voltage is 20-30 V. when voltage passes this circuit. It will dec
 
 .. math:: 
 
-    V_{out} = \frac{R_{3}}{R_{1}} \times (V_{2} - V_{1}) \\ 
-    \frac{R_{3}}{R_{1}} = \frac{V_{out}}{V_{2} - V_{1}} = \frac{3.3}{2.2 - 1.1} = 3 \\
-    R_{3} = 3(R_{1}) \\
-    R_{1} = R_{2} \\
-    R_{3} = R_{4}
+    V_{out} &= \frac{R_{3}}{R_{1}} \times (V_{2} - V_{1}) \\ 
+    \frac{R_{3}}{R_{1}} &= \frac{V_{out}}{V_{2} - V_{1}} = \frac{3.3}{2.2 - 1.1} = 3 \\
+    R_{3} &= 3(R_{1}) \\
+    R_{1} &= R_{2} \\
+    R_{3} &= R_{4}
 
 .. image:: ./images/13.png
     :width: 480

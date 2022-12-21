@@ -16,6 +16,7 @@ we are cacao's team.
    perception/index.rst
    appendix/index.rst
    firmware/index.rst
+   mechanical_system/index.rst
 
 
 .. toctree::

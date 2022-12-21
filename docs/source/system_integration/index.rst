@@ -1,6 +1,6 @@
-.. _software_integration:
+.. _system_integration:
 
-Software Integration
+System Integration
 ######################
 
 .. toctree::

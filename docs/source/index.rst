@@ -22,7 +22,7 @@ we are cacao's team.
    :maxdepth: 1
    :hidden:
 
-   software_integration/index.rst
+   system_integration/index.rst
    
 
 

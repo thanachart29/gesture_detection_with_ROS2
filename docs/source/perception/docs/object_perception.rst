@@ -106,6 +106,7 @@ Knowledge & Tools
     - Width of the box (b_w)
     - Height of the box (b_h)
 
+
     In addition to that, YOLO predicts the corresponding number c for the predicted class as well as the probability of the prediction (P_c)
 
     source: https://www.baeldung.com/cs/yolo-algorithm
@@ -118,6 +119,8 @@ Knowledge & Tools
         :alt: YOLOv5_bounding_box
 
         Figure 2: YOLOv5_bounding_box
+
+|
 
     There is an YOLOv5 official link here: https://github.com/ultralytics/yolov5
     
@@ -147,6 +150,8 @@ Knowledge & Tools
 
         Figure 3: HSV color
 
+|
+
     You can see the color values obtained by adjusting various HSV values at the link: https://color.lukas-stratmann.com/color-systems/hsv.html
     
     Since the image frame we received is based on the BGR color model, we need to convert the image frame to the HSV color model, which can be converted using the OpenCV library.
@@ -168,6 +173,8 @@ Knowledge & Tools
 
         Figure 4: what_is_color_depth
 
+|
+
     **Structured light and coded Light depth cameras** are not identical but similar technologies. They rely on projecting light (usually infrared light) from some kind of emitter onto the scene. The projected light is patterned, either visually or over time, or some combination of the two. Because the projected pattern is known, how the sensor in the camera sees the pattern in the scene provides the depth information. For example, if the pattern is a series of stripes projected onto a ball, the stripes would deform and bend around the surface of the ball in a specific way.
 
     If the ball moves closer to the emitter, the pattern would change too. Using the disparity between an expected image and the actual image viewed by the camera, distance from the camera can be calculated for every pixel.
@@ -179,6 +186,8 @@ Knowledge & Tools
 
         Figure 5: how_coded_light_works-1
 
+|
+
     **Stereo depth cameras** have two sensors, spaced a small distance apart. A stereo camera takes the two images from these two sensors and compares them. Since the distance between the sensors is known, these comparisons give depth information. Stereo cameras work in a similar way to how we use two eyes for depth perception. Our brains calculate the difference between each eye. Objects closer to us will appear to move significantly from eye to eye (or sensor to sensor), where an object in the far distance would appear to move very little.
 
     Because stereo cameras use any visual features to measure depth, they will work well in most lighting conditions including outdoors. The addition of an infrared projector means that in low lighting conditions, the camera can still perceive depth details
@@ -189,6 +198,8 @@ Knowledge & Tools
         :alt: how_stereo_depth_works
 
         Figure 6: how_stereo_depth_works
+
+|
 
     source: https://www.intelrealsense.com/beginners-guide-to-depth/
 
@@ -204,6 +215,8 @@ Knowledge & Tools
         :alt: xyz_pinhole_camera_coordiantes
 
         Figure 7: xyz_pinhole_camera_coordiantes
+
+|
 
     Which can be read and understood from the article according to this link: https://www.fdxlabs.com/calculate-x-y-z-real-world-coordinates-from-a-single-camera-using-opencv/
 
@@ -327,7 +340,7 @@ You can try to use it with the following steps
 4. Open a new terminal and run the Estimate coordinate node.
 
 	.. code-block:: bash
-
+        
         ros2 run object_detection estimate_coordinate_rs2.py
 
 5. Open a new terminal and call a service to start detecting objects.
@@ -474,6 +487,7 @@ Problem and future plan
         It is possible to train models from custom data sets to increase the efficiency of detecting objects of interest. You can use Roboflow to help manage trains.
 
         Roboflow: https://roboflow.com/
+        
         Roboflow Universe: https://universe.roboflow.com/
 
         learning source: https://www.youtube.com/watch?v=0GwnxFNfZhM

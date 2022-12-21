@@ -42,4 +42,7 @@ This battery management system comes from a combination of the original battery 
 
     Capacity = Current  hours of use = 62.625  3 = 187.875 Ah
 
-.. note:: In this project, we use a custom battery of 220Ah capacity because of store production restrictions. 
+.. note:: In this project, we use a custom battery of 220Ah capacity because of store production restrictions.
+
+- Battery type selection
+- 

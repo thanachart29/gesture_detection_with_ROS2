@@ -4,7 +4,7 @@ Electronic System
 ######################
 
 Requirement
-=============
+"""""""""""""
 
 **Functional requirements**
 
@@ -41,7 +41,7 @@ Requirement
 - The robot must have a backup system in case something crashes or doesn’t work.
 
 System architecture
-====================
+^^^^^^^^^^^^^^^^^^^^
 
 .. image:: ./images/1.png
     :width: 480
@@ -62,7 +62,7 @@ Electrical control system is also an important system of the robot. Inside this 
 The last system is low-level and high level devices that require electricity to operate. Each device requires a different form of electricity such as alternative current devices and direct current devices.
 
 Overall robot’s schematic diagram
-======================================
+----------------------------------
 
 .. image:: ./images/2.png
     :width: 480

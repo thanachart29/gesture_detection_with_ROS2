@@ -4,7 +4,7 @@ Electronic System
 ######################
 
 Requirement
-"""""""""""""
+******************
 
 **Functional requirements**
 
@@ -41,7 +41,7 @@ Requirement
 - The robot must have a backup system in case something crashes or doesn’t work.
 
 System architecture
-"""""""""""""""""""""
+********************
 
 .. image:: ./images/1.png
     :width: 480
@@ -62,7 +62,7 @@ Electrical control system is also an important system of the robot. Inside this 
 The last system is low-level and high level devices that require electricity to operate. Each device requires a different form of electricity such as alternative current devices and direct current devices.
 
 Overall robot’s schematic diagram
-""""""""""""""""""""""""""""""""""
+***********************************
 
 .. image:: ./images/2.png
     :width: 480
@@ -72,10 +72,13 @@ Overall robot’s schematic diagram
 
 In part of overall robot’s schematic diagram notice that this schematic diagram looks similar to system architecture, but there will be some differences, for example , both electrical protection system and power management system are integrated into one system , but it will be divided in the form of installation at the base and the body of the robot instead. Electrical control system will be divided into the microcontroller part (ECS) and the panel part instead. Battery management systems and electrical sensors are integrated into one system. And finally, high-level and low-level devices are separated by the type of electricity to be used instead. Such as 24VDC devices , 5VDC devices and 220VAC devices.
 
----------------------------------------------------------
 
 .. toctree::
    :maxdepth: 1
    :hidden:
    
    docs/battery_management_system.rst
+   docs/electrical_sensors.rst
+   docs/power_management_system.rst
+   docs/driving_system.rst
+   docs/electrical_control_system.rst

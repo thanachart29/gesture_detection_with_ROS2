@@ -32,13 +32,13 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
         .. math:: 
 
-            R_{2} = \frac{V_{out} x R_{1}}{V_{in} - V_{out}} = \frac{5 x 10000}{30 - 5} = 2000 \Omega \\
+            R_{2} = \frac{V_{out} \times R_{1}}{V_{in} - V_{out}} = \frac{5 \times 10000}{30 - 5} = 2000 \Omega \\
         
         If we set R2 to 2k𝛺 , Vout when Vin is 20 V. is 
 
         .. math:: 
 
-            V_{out} = \frac{V_{in} x R_{2}}{R_{1} + R_{2}} = \frac{20 x 2000}{10000 + 2000} = 3.3 V
+            V_{out} = \frac{V_{in} \times R_{2}}{R_{1} + R_{2}} = \frac{20 \times 2000}{10000 + 2000} = 3.3 V
 
         So when we use R1 at 10 k𝛺 and R2 at 2k𝛺 ,  Vout will divided to 3.3 - 5 V. for gate threshold voltage
 
@@ -52,7 +52,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
         After electrical power pass through the MOSFET(Q1) . circuit muse be protection system in order to protect over current and short circuit. So we use 10A 250V fuse to protect in this section.
 
-2. Buck converter circuit (LM2576HV)
+1. Buck converter circuit (LM2576HV)
 
 .. image:: ./images/27.png
     :width: 480

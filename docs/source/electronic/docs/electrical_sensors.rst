@@ -8,7 +8,7 @@ Current sensors
 
 Due to high current at the battery. To make current sensors by sensor we must measure current at 0A current to 100A current. So we use shunt resistor (750 𝜇𝛺) to measure voltage drop in resistor. By voltage value can be calculated from Ohm’s law 
 
-.. math:: V_{max} = I_{max}R =100 x 750 x 10^{-6} = 0.075 V = 75 mV. 
+.. math:: V_{max} = I_{max}R =100 \times 750 \times 10^{-6} = 0.075 V = 75 mV. 
 
 When we get a sensor value the voltage is between 0 - 75 mV which is a very small range. If we want to input this value into the ADC of the microcontroller, we need to gain this voltage by op-amp in non-inverting amplifier mode. (gain voltage to 0- 3.3V for STM32h745 ADC)
 
@@ -38,13 +38,13 @@ When we want to check the voltage of the battery to calculate the state of charg
 
 .. math:: 
 
-    R_{2} = \frac{V_{out} x R_{1}}{V_{in}-V_{out}} = \frac{3.3 x 10000}{30 - 3.3} = 1235.955 \Omega
+    R_{2} = \frac{V_{out} \times R_{1}}{V_{in}-V_{out}} = \frac{3.3 \times 10000}{30 - 3.3} = 1235.955 \Omega
 
 And Vmin is calculated by : 
 
 .. math:: 
 
-    V_{min} = \frac{V_{in} x R_{2}}{R_{1}-R_{2}} = \frac{20 x 1235.955}{10000 + 1235.955} = 2.2V
+    V_{min} = \frac{V_{in} \times R_{2}}{R_{1}-R_{2}} = \frac{20 \times 1235.955}{10000 + 1235.955} = 2.2V
 
 .. image:: ./images/12.png
     :width: 480
@@ -58,7 +58,7 @@ If the battery voltage is 20-30 V. when voltage passes this circuit. It will dec
 
 .. math:: 
 
-    V_{out} = \frac{R_{3}}{R_{1}} x (V_{2} - V_{1}) \\ 
+    V_{out} = \frac{R_{3}}{R_{1}} \times (V_{2} - V_{1}) \\ 
     \frac{R_{3}}{R_{1}} = \frac{V_{out}}{V_{2} - V_{1}} = \frac{3.3}{2.2 - 1.1} = 3 \\
     R_{3} = 3(R_{1}) \\
     R_{1} = R_{2} \\

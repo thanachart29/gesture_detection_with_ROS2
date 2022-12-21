@@ -76,7 +76,7 @@ From the base section give voltage 24 VDC to the body section. This section will
         .. math:: 
 
             P_{out} = 510 W \\
-            P_{in} = P_{out} x \frac{100}{eff.} = 510 x \frac{100}{92} = 544.35 W \\
+            P_{in} = P_{out} \times \frac{100}{eff.} = 510 \times \frac{100}{92} = 544.35 W \\
             I = \frac{P}{V} = \frac{544.35}{24} = 22.68 A
 
     - Spare

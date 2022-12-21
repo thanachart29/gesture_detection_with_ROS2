@@ -75,10 +75,10 @@ In part of overall robot’s schematic diagram notice that this schematic diagra
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
    
    docs/battery_management_system.rst
    docs/electrical_sensors.rst
    docs/power_management_system.rst
    docs/driving_system.rst
    docs/electrical_control_system.rst
+   docs/experiment.rst

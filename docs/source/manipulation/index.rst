@@ -290,7 +290,7 @@ Subsystem Verification
 
    Figure 6: Started to pose in case z-axis is more than 0 meters
 
-
+|
 
    - Start to pose in case z-axis is less than 0 meters
 
@@ -301,7 +301,7 @@ Subsystem Verification
 
    Figure 7: Started to pose in case z-axis is less than 0 meters
 
-
+|
 
    So, we will find the position of UR3e that make UR3e doesn’t in singularity.
 
@@ -314,6 +314,8 @@ Subsystem Verification
 
    Figure 8: Workspace of case z-axis is more than 0 meters
 
+|
+
    - Workspace of case z-axis is less than 0 meters: https://youtube.com/shorts/_4V6vwKqsns?feature=share
 
 .. figure:: ./docs/images/workspace_less0.jpg
@@ -322,6 +324,8 @@ Subsystem Verification
    :alt: Workspace of case z-axis is less than 0 meters
 
    Figure 9: Workspace of case z-axis is less than 0 meters
+
+|
 
 
 2. Emergency Stop Test

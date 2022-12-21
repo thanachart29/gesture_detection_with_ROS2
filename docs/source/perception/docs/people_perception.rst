@@ -201,6 +201,7 @@ Installation
 
 Example
 *********
+the scope of this example is person tracking
 
 1. Open terminal in your GUI
 
@@ -220,7 +221,27 @@ Example
 
     This command must be run when people_detection_scripts.py still tracking person otherwise it will not activate peole follower
 
-4. To end people follower type this command in terminal
+ .. figure:: ./images/base_control.png
+     :width: 480
+     :align: center
+     :alt: base_control
+
+4. Run this command in new terminal to visualize pointcloud
+
+.. code-block:: bash
+
+    ros2 launch realsense2_description view_model.launch.py model:=test_d455_camera.urdf.xacro
+
+5. Add topic by selecting by topic and add depth/color/points/PointCloud2
+
+6. Now, you should see tf transform attach to tracked person 
+
+ .. figure:: ./images/rviz_people_detection.png
+     :width: 480
+     :align: center
+     :alt: rviz_people_detection
+
+7. To end people follower type this command in terminal
 
     .. code-block:: bash
 
@@ -232,6 +253,23 @@ Example
 
 Subsystem Verification
 ************************
+
+Scope of testing
+""""""""""""""""""
+
+1. Test with 2 scenarioes, one person and people in camera
+2. Test initial detection range of people 30, 50, 70, 100 centimetres
+3. Test distant between tracked person and robot when following initiate 1-7 metres
+
+Unit test
+""""""""""
+
+1. Detection range
+
+    According to testing,it could track person for maximum range 5 meters away form robot.We suggest that you should keep distant from robot aroud 1 meter to make sure that there will be no stacle pass between you and robot. 2.Speed for following
+
+    Tracked person should walk at speed below 0.1 meters per second in front of robot to make sure that robot will eventually catch up.
+
 
 Problem and future plan
 *************************

@@ -8,5 +8,6 @@ Cacao's robot appendix
 .. toctree::
    :maxdepth: 1
 
-   docs/docker.rst
+   docs/device.rst
    docs/realsense.rst
+   docs/docker.rst

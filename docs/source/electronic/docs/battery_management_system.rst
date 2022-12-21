@@ -45,4 +45,9 @@ This battery management system comes from a combination of the original battery 
 .. note:: In this project, we use a custom battery of 220Ah capacity because of store production restrictions.
 
 - Battery type selection
-- 
+
+    From the performance requirement that supply continuous current is about 60A and charging time about 6 hours. So, discharge rate and charge rate of the battery is
+
+    .. math:: 
+
+        Discharge rate = \frac{supply}{currentcapacity} = 62.625187.875 = 0.33 C

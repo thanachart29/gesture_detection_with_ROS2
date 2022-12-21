@@ -4,7 +4,7 @@ Electronic System
 ######################
 
 Requirement
-----------------------------------
+"""""""""""""
 
 **Functional requirements**
 
@@ -41,7 +41,7 @@ Requirement
 - The robot must have a backup system in case something crashes or doesn’t work.
 
 System architecture
-^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
 
 .. image:: ./images/1.png
     :width: 480

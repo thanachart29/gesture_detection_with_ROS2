@@ -1,7 +1,10 @@
 .. _device:
 
-Jetson Xavier
+Device
 ##############
+
+Jetson Xavier
+*************************
 
 1. Flash Jetson with SDKmanager
 
@@ -200,6 +203,140 @@ When you see the following window appear, the installation has been done
                
 
 Intel Nuc
-##############
+************
 
+1. Change Karnel of Ubantu 
 
+    - Check current kernel version
+
+        .. code-block:: bash
+
+            uname -r
+
+    - Installing Ubuntu Mainline Kernel Installer
+
+        .. code-block:: bash
+            
+            sudo add-apt-repository ppa:cappelikan/ppa
+            sudo apt update
+            sudo apt install mainline
+
+    - Open Mainline and select version to install
+
+.. figure:: ./images/11.png
+   :width: 480
+   :align: center
+
+|
+
+    - After install complete, reboot Intel NUC
+
+        Open Grub menu on boot and select kernel version of ubantu
+
+.. figure:: ./images/12.png
+   :width: 480
+   :align: center
+
+|
+
+2. Install Intel realsense SDK follow this document: :ref:`some disadvantages <realsenseInstallation>`:
+
+3. Remote to device
+
+.. figure:: ./images/13.jpg
+   :width: 480
+   :align: center
+
+|
+
+    - Remote to Intel NUC with AnyDesk
+
+        We will use AnyDesk to remote the desktop of Intel NUC from your computer.
+
+        - Download Anydesk on your computer: https://anydesk.com/en/downloads/windows
+
+        - Start Intel NUC and open AnkDesk on Intel NUC.
+
+        - Connect the same network wth Intel NUC.
+
+        - On your computer connect to the address of Intel NUC.
+
+.. figure:: ./images/14.png
+   :width: 480
+   :align: center
+
+|
+
+        - Click accept connect the device on Intel NUC.
+
+        - Remote Intel NUC with your computer has been done.
+
+.. figure:: ./images/15.png
+   :width: 480
+   :align: center
+
+|
+
+    - Remote to Jetson Xavier 
+
+        - Set up LAN port
+
+            - Intel NUC
+
+.. figure:: ./images/16.png
+   :width: 480
+   :align: center
+
+|
+
+            - Jetson Xavier
+
+.. figure:: ./images/17.png
+   :width: 480
+   :align: center
+
+|
+        
+        - Open VNC Viewer and connect to address 10.42.0.2
+
+.. figure:: ./images/18.png
+   :width: 480
+   :align: center
+
+|
+
+        - Connect to Jetson Xavier successfully
+
+.. figure:: ./images/19.png
+   :width: 480
+   :align: center
+
+|
+
+    - SSH to Jetson Xavier via vs code
+
+        For debugging code in Jetson Xavier
+
+        - Download ssh extension on vscode
+
+.. figure:: ./images/20.png
+   :width: 480
+   :align: center
+
+|
+
+        - Connect ssh to address 10.42.0.2
+
+.. figure:: ./images/21.png
+   :width: 480
+   :align: center
+
+|
+
+        - Open a new window of ssh target and connect to Jetson Xavier
+
+.. figure:: ./images/22.png
+   :width: 480
+   :align: center
+
+|

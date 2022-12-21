@@ -57,6 +57,8 @@ Usage instruction
 
 ----------------------------
 
+.. _realsenseInstallation:
+
 Installation
 *************
 

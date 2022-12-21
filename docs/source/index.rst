@@ -15,6 +15,7 @@ we are cacao's team.
    manipulation/index.rst
    perception/index.rst
    appendix/index.rst
+   firmware/index.rst
 
 
 .. toctree::

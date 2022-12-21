@@ -72,6 +72,7 @@ Overall robot’s schematic diagram
 
 In part of overall robot’s schematic diagram notice that this schematic diagram looks similar to system architecture, but there will be some differences, for example , both electrical protection system and power management system are integrated into one system , but it will be divided in the form of installation at the base and the body of the robot instead. Electrical control system will be divided into the microcontroller part (ECS) and the panel part instead. Battery management systems and electrical sensors are integrated into one system. And finally, high-level and low-level devices are separated by the type of electricity to be used instead. Such as 24VDC devices , 5VDC devices and 220VAC devices.
 
+---------------------------------------------------------
 
 .. toctree::
    :maxdepth: 1

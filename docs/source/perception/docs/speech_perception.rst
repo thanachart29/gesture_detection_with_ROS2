@@ -36,8 +36,10 @@ Speech perception consists of 2 node 1 for process algorithm and 1 for interface
 
 It have 4 service server and 5 topic
 
+
 ::
-    - service
+
+   Service:
 
         Name : /speech2text_start/status Type: std_srvs.srv/Empty
         
@@ -55,7 +57,7 @@ It have 4 service server and 5 topic
 
         It use to enable node to finish task
 
-    - Topic:
+    Topic:
     
         Name : /speech2text_start/status Type: std_msg.msg/Int8
     

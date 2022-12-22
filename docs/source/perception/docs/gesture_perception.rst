@@ -160,43 +160,79 @@ The gesture detection function consist of image subscriber, extract image featur
 Subsystem Verification
 ************************
 
+Detection range
+"""""""""""""""""
+
+On the first version of the robot, the camera has 160 cm height from the floor which means the maximum detect range should be more than 230 cm from our calculation with Realsense d455 extrinsic matrix
+
+- test condition
+
+  - this testing result using estimate distance with 2.5D anchors
+
+  - min confidence and tracking of mediapipe is 0.5
+
+- result
+
+
+Processing time testing
+""""""""""""""""""""""""
+
+
+
+- test condition
+
+  - Running with CPU Intel NUC on the robot
+
+- result
+
+  - Each node using 300 MB memory
+  - Each node uses 10% CPU when processing with a max frequency
+
+
 Problem and future plan
 *************************
 
+Problem
+""""""""""
+- The classifier model has low performance
+- Detecting the hand only in front of the robot
+- If there are many hands in the camera plane there is no indicator to detect
+
 Gesture perception tasks on robocup@home
+""""""""""""""""""""""""""""""""""""""""""
 
-- Task 5.1 carry my luggage
+Task 5.1 carry my luggage
 
-    - Detect start command
-    - Detect pointing position
+  - Detect start command
+  - Detect pointing position
 
-- Task 5.3 Farewell
+Task 5.3 Farewell
 
-    - Detect tired user
-    - Detect calling and signal to leave
-
-
-- Task 6.4 Hand Me That
-
-    - Detect pointing position
+  - Detect tired user
+  - Detect calling and signal to leave
 
 
-- Task 6.6 Restaurant
+Task 6.4 Hand Me That
+
+  - Detect pointing position
 
 
-    - Detect calling and waving
+Task 6.6 Restaurant
 
 
-- Task 6.7 Smoothie Chef
+  - Detect calling and waving
 
 
-    - Learning how to prepare the smoothie and then follow
+Task 6.7 Smoothie Chef
 
 
-- Task 6.8 Stickler for the Rules
+  - Learning how to prepare the smoothie and then follow
 
 
-    - Identify rule breaker
+Task 6.8 Stickler for the Rules
+
+
+  - Identify rule breaker
 
 
 .. note:: This semester we are only planning for task 5.1

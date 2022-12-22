@@ -68,11 +68,28 @@ Verification
 ************
 - Walk through 1 cm and 2 cm of ramps and step.
 
-2 VDO here
+.. raw:: html
+
+    <h1 align="center">
+      <div>
+        <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+          <iframe width="450" height="300" src="https://www.youtube.com/embed/tQwgsQGdPhc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="450" height="300" src="https://www.youtube.com/embed/Fxxkan6yxDI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </h1>
 
 - Walk through 1 inch length gap (elevator gap)
 
-VDO here
+.. raw:: html
+
+    <h1 align="center">
+      <div>
+        <div style="position: relative; padding-bottom: 0%; overflow: hidden; max-width: 100%; height: auto;">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/xx1Jw1_mspk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </h1>
 
 On-going process
 ****************

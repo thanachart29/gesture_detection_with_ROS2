@@ -15,7 +15,13 @@ Speech Perception
 
 Overview
 **********
-pakage that build on ros2 foxy for caoco robot to recognize, synthesis speech and keyword finding
+
+Speech perception consists of  2 system Speech recognition and Speech systesis
+
+Speech recognition is a technologies that enable the recognition and translation of spoken language into text by computers with the main benefit of searchability. It is also known as computer speech recognition or speech to text (STT).
+
+Speech systesis is a computer system used for this purpose is called a speech synthesizer, and can be implemented in software or hardware products. A text-to-speech (TTS) system converts normal language text into speech;
+
 
 Architecture
 """"""""""""""
@@ -26,9 +32,72 @@ Architecture
 
 |
 
+Speech perception consists of 2 node 1 for process algorithm and 1 for interfacev
+
+It have 4 service server and 5 topic
+
+::
+    - service
+
+        Name : /speech2text_start/status Type: std_srvs.srv/Empty
+        
+            It use to enable node to do start task and play sound
+
+        Name : /speech2text_bag/status Type: std_srvs.srv/Empty
+
+            It use to enable node to confirm color of bag
+
+        Name : /speech2text_finish/status Type: std_srvs.srv/Empty
+
+            It use to enable node check when user arrive at the destination
+
+        Name : /speech2text_end/status Type: std_srvs.srv/Empty
+
+        It use to enable node to finish task
+
+    - Topic:
+    
+        Name : /speech2text_start/status Type: std_msg.msg/Int8
+    
+            It publish status of start task
+    
+        Name : /speech2text_bag/status Type:std_msg.msg/Int8
+    
+            It publish status of bag task
+    
+        Name : /speech2text_finish/status Type: std_msg.msg/Int8
+    
+            It publish status of finish task
+    
+        Name : /speech2text_end/status Type: std_msg.msg/Int8
+    
+            It publish status of end task
+    
+        Name : /target_color Type: std_msg.msg/string
+    
+            It subscription color of bag from object perception
+
+
+Layout Package
+""""""""""""""""
+
+| Speech
+| ├── Speech
+| │   └── __init__.py
+| ├── scripts
+| │   └── speech.py
+| ├── CMakeList.txt
+| ├── package.xml
+| ├── sound
+| │     ├── arrived.mp3
+| │     └──I can't hear you.mp3
+| └── README.md
+
+
+
+
 Concept
 """"""""
-we have 2 node 1 for process algorithm and 1 for interface
 
 - Node speech process
 
@@ -192,19 +261,70 @@ Example
 Subsystem Verification
 ************************
 
-speech detection with noise cancellation
+speech detection with noise environment
 """"""""""""""""""""""""""""""""""""""""""""
-can ignore a noise and still recognize the word that we want in situation that there have a person talk in the same room  we adding sound form video people talking
+testing with use speaker from google translate in english language to say yes and thank you to see accuracy of model speech recongition
+
+.. note:: noise environment it is a situation that there have a person talk in the same room  we adding sound form video people talking
 
 - result
 
-.. image:: ./images/Speech_result.png
-    :width: 480
-    :align: center
+.. list-table::
+   :widths: 50 30 30
+   :header-rows: 1
+   :align: center
+
+   * - Number of testing
+     - Yes
+     - Thank you
+   * - 1
+     - mm
+     - hound
+   * - 2
+     - error
+     - channel two
+   * - 3
+     - oh
+     - oh
+   * - 4
+     - hi
+     - hang on
+   * - 5
+     - error
+     - thank you
+   * - 6
+     - error
+     - and i
+   * - 7
+     - oh
+     - mm
+   * - 8
+     - yes
+     - yeah
 
 |
 
-    the result will show that it can detect the word that we want but it also detect the noise that we don't want
+.. figure:: ./images/Speech_result2.png
+    :width: 480
+    :align: center
+    :alt: Object_Recognition_node_architecture
+
+    result with “yes” word
+
+|
+
+.. figure:: ./images/Speech_result.png
+    :width: 480
+    :align: center
+    :alt: Object_Recognition_node_architecture
+
+    result with “yes” word
+
+|
+
+word can detection with saying yes,thank you in translate
+
+- Problem
 
     model speech recognition have low accuaracy it often go wrong word.
 

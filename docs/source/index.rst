@@ -13,18 +13,15 @@ we are cacao's team.
    mechanical_system/index.rst
    electronic/index.rst
    firmware/index.rst
-   navigation/index.rst
    manipulation/index.rst
    perception/index.rst
    appendix/index.rst
    
 
 .. toctree::
-   :caption: CACAO'S Software integration
+   :caption: CACAO'S System integration
    :maxdepth: 1
    :hidden:
 
    system_integration/index.rst
    
-
-

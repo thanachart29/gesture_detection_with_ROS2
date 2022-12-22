@@ -1,6 +1,6 @@
 .. _documentation_home:
 
-CACAO'S Robot
+CACAO Robot
 ==============
 
 .. raw:: html
@@ -14,7 +14,7 @@ CACAO'S Robot
     </h1>
 
 
-The Cacao project is designing, building, and developing the structure and abilities of the mobile manipulator robot whose purpose is to live with humans. This document will provide The robot subsystem and Robot system integration
+The CACAO project is designing, building, and developing the structure and abilities of the mobile manipulator robot whose purpose is to live with humans. This document will provide The robot subsystem and robot system integration each part will consist of a concept, overview, methodology, and application
 
 .. System Overview
 .. ****************

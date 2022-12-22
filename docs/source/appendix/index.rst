@@ -3,7 +3,6 @@
 Appendix
 #################
 
-Cacao's robot appendix
 
 .. toctree::
    :maxdepth: 1

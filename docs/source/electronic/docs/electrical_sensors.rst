@@ -20,10 +20,10 @@ When we get a sensor value the voltage is between 0 - 75 mV which is a very smal
 
 .. math:: 
 
-    A_{V} = \frac{V_{out}}{V_{in}} = \frac{3.3}{0.075} = 44 \\
-    A_{V} = 1 + \frac{R_{F}}{R_{2}} \\
-    43 = \frac{R_{F}}{R_{2}} \\
-    R_{F} = 43(R_{2})
+    A_{V} &= \frac{V_{out}}{V_{in}} = \frac{3.3}{0.075} = 44 \\
+    A_{V} &= 1 + \frac{R_{F}}{R_{2}} \\
+    43 &= \frac{R_{F}}{R_{2}} \\
+    R_{F} &= 43(R_{2})
 
 Therefore , if we set R2 to 1 k𝛺  RF will be 43 k𝛺 . in this robot, we use variable resistor to set and calibrate resistor in this section (by selecting R2 at 1 k𝛺  and RF is variable resistor 100 k𝛺)
 

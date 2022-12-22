@@ -13,6 +13,8 @@ Gesture Perception
       </div>
     </h1>
 
+  the video above shows the demonstration of the gesture perception node which was developed to perceive the start command and pointed posture 
+
 Overview
 **********
 
@@ -173,6 +175,11 @@ On the first version of the robot, the camera has 160 cm height from the floor w
 
 - result
 
+.. image:: ./images/gesturetest1.png
+    :width: 480
+    :align: center
+
+|
 
 Processing time testing
 """"""""""""""""""""""""
@@ -188,6 +195,11 @@ Processing time testing
   - Each node using 300 MB memory
   - Each node uses 10% CPU when processing with a max frequency
 
+.. image:: ./images/gesturetest2.png
+    :width: 640
+    :align: center
+
+|
 
 Problem and future plan
 *************************

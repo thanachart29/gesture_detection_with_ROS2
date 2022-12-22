@@ -186,9 +186,6 @@ Concept
 Installation
 *************
 
-Python library
-""""""""""""""""
-
 - playsound
 
     .. code-block:: bash

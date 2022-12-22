@@ -8,7 +8,7 @@ PCB Design
 
 InwZaBoard
 
-.. image:: ./images/25.png
+.. image:: ./images/22.png
     :width: 480
     :align: center
 
@@ -18,7 +18,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
 1. Power source for electrical control board
 
-.. image:: ./images/25.png
+.. image:: ./images/23.png
     :width: 480
     :align: center
 
@@ -42,7 +42,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
         So when we use R1 at 10 k𝛺 and R2 at 2k𝛺 ,  Vout will divided to 3.3 - 5 V. for gate threshold voltage
 
-.. image:: ./images/26.png
+.. image:: ./images/24.png
     :width: 480
     :align: center
 
@@ -54,7 +54,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
 1. Buck converter circuit (LM2576HV)
 
-.. image:: ./images/27.png
+.. image:: ./images/25.png
     :width: 480
     :align: center
 
@@ -71,7 +71,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
         From this circuit , we will get a buck converter circuit that supply constant voltage at 5 V. and maximum current at 3A  
 
-.. image:: ./images/28.png
+.. image:: ./images/26.png
     :width: 480
     :align: center
 
@@ -81,7 +81,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
     In order to Op-amp need a negative voltage to function. So we choose to implement a charge pump circuit using the TJ7660N charge pump voltage converter IC that is used for converting positive constant voltage to negative constant voltage.
 
-.. image:: ./images/29.png
+.. image:: ./images/27.png
     :width: 480
     :align: center
 
@@ -98,7 +98,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
         From this circuit , we will get a charge pump circuit that supply constant voltage at  - 5 V. for connecting with Vss of Op-amp
 
-.. image:: ./images/30.png
+.. image:: ./images/28.png
     :width: 480
     :align: center
 
@@ -106,7 +106,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
 4. Lidar sensor and Coil contact Hub
 
-.. image:: ./images/31.png
+.. image:: ./images/29.png
     :width: 480
     :align: center
 
@@ -116,7 +116,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
 5. Op-amp circuit
 
-.. image:: ./images/32.png
+.. image:: ./images/30.png
     :width: 480
     :align: center
 
@@ -126,7 +126,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
 6. RJ45 port 
 
-.. image:: ./images/32.png
+.. image:: ./images/31.png
     :width: 480
     :align: center
 
@@ -136,7 +136,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
 7. Control Panel port 
 
-.. image:: ./images/33.png
+.. image:: ./images/32.png
     :width: 480
     :align: center
 
@@ -146,7 +146,7 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
 8. External Panel
 
-.. image:: ./images/34.png
+.. image:: ./images/33.png
     :width: 480
     :align: center
 
@@ -164,8 +164,8 @@ For lnwZaBoard we design it to manage the stage of the robot and hub of all devi
 
     - Selector switch and Indicator lamp
 
-.. image:: ./images/35.png
-    :width: 480
+.. image:: ./images/34.png
+    :width: 540
     :align: center
 
 |

@@ -6,7 +6,7 @@ Battery Management System
 schematic diagram
 *****************
 
-.. image:: ./images/3.png
+.. image:: ./images/03.png
     :width: 480
     :align: center
 
@@ -18,7 +18,7 @@ This battery management system comes from a combination of the original battery 
 
     From the performance requirement that the robot's battery operate at full load must last more than 3 hours , charging time about 6 hours and supply continuous current about 60A . First we need to calculate the current load of the fully operational robot. And from the calculations, the results are shown below this table.
 
-.. image:: ./images/3.png
+.. image:: ./images/04.png
     :width: 480
     :align: center
 
@@ -28,7 +28,7 @@ This battery management system comes from a combination of the original battery 
 
     From the table above, when we know how much power that a robot uses. Then, we will choose the voltage of the battery that we will use with our robot. By selecting voltage we must consider about current flow in the system and the device in the robot.
 
-.. image:: ./images/4.png
+.. image:: ./images/05.png
     :width: 480
     :align: center
 
@@ -57,7 +57,7 @@ This battery management system comes from a combination of the original battery 
 
 - Battery characteristics
 
-.. image:: ./images/5.png
+.. image:: ./images/06.png
     :width: 480
     :align: center
 
@@ -90,7 +90,7 @@ Summary :
 
 - Overcharge protection
 
-.. image:: ./images/6.png
+.. image:: ./images/07.png
     :width: 480
     :align: center
 
@@ -100,7 +100,7 @@ Summary :
 
 - Over Discharge protection
 
-.. image:: ./images/7.png
+.. image:: ./images/08.png
     :width: 480
     :align: center
 
@@ -112,7 +112,7 @@ Summary :
 
     In this robot we choose CC/CV charging method because CC/CV charging is a typical method of charging rechargeable batteries. Operation switches between CC charging, which charges with a constant current, and CV that charges at a constant voltage, depending on the voltage of the rechargeable battery.
 
-.. image:: ./images/8.png
+.. image:: ./images/09.png
     :width: 480
     :align: center
 
@@ -130,7 +130,7 @@ Summary :
 
     From the performance requirement that the robot's charging time must not exceed 6 hours. And NMC battery recommended charge rate is about 0.2C. (44A if calculated from 220Ah capacity) So, we will use a charger with continuous output current at 40A. And the charging method is constant current Constant voltage Full automatic shutdown (CC-CV). Make us choose on-board charger model SMCZ2P-2440A
 
-.. image:: ./images/9.png
+.. image:: ./images/10.png
     :width: 480
     :align: center
 
@@ -140,7 +140,7 @@ Summary :
 
     From the charger selection that charger will supply continuous current at 40A. So a connector which is connected between the robot battery and charger must withstand 40A current and be easy to plug. Therefore, we use the XT90S connector which has an anti spark design when connecting.
 
-.. image:: ./images/10.png
+.. image:: ./images/11.png
     :width: 480
     :align: center
 
@@ -150,7 +150,7 @@ Summary :
 
     From maximum load that battery will supply discharge current at 60A. So the wire which is connected to other devices such as R shunt, charging connector and terminal block is High Temperature Resistant Silicone Wire (10AWG).
 
-.. image:: ./images/11.png
+.. image:: ./images/12.png
     :width: 480
     :align: center
 

@@ -6,7 +6,7 @@ Power management system
 Base section
 *************
 
-.. image:: ./images/14.png
+.. image:: ./images/16.png
     :width: 480
     :align: center
 
@@ -18,7 +18,7 @@ The battery supplies voltage 24 VDC to the terminal at the base section then for
 
     - motor
 
-.. image:: ./images/15.png
+.. image:: ./images/17.jpg
     :width: 480
     :align: center
 
@@ -40,7 +40,7 @@ The battery supplies voltage 24 VDC to the terminal at the base section then for
 Body section
 *************
 
-.. image:: ./images/16.png
+.. image:: ./images/18.png
     :width: 480
     :align: center
 
@@ -53,7 +53,7 @@ From the base section give voltage 24 VDC to the body section. This section will
     - Power management system board
     - Inverter
 
-.. image:: ./images/17.png
+.. image:: ./images/19.png
     :width: 480
     :align: center
 
@@ -63,7 +63,7 @@ From the base section give voltage 24 VDC to the body section. This section will
 
     - Jetson nano require 5-10 W
 
-.. image:: ./images/18.png
+.. image:: ./images/20.png
     :width: 480
     :align: center
 

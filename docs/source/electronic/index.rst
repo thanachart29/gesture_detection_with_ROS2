@@ -43,7 +43,7 @@ Requirement
 System architecture
 ********************
 
-.. image:: ./images/1.png
+.. image:: ./docs/images/01.png
     :width: 480
     :align: center
 
@@ -64,7 +64,7 @@ The last system is low-level and high level devices that require electricity to 
 Overall robot’s schematic diagram
 ***********************************
 
-.. image:: ./images/2.png
+.. image:: ./docs/images/02.png
     :width: 480
     :align: center
 

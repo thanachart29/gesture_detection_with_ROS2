@@ -21,7 +21,7 @@ From calculation, we know total load when robots operate at full load. So we des
 
 **Result**
 
-.. image:: ./images/36.png
+.. image:: ./images/35.png
     :width: 480
     :align: center
 
@@ -29,7 +29,7 @@ From calculation, we know total load when robots operate at full load. So we des
 
     - In case of battery voltage, the robot operates at full load mode. In 4 hours, battery decrease about 1.5 V. by voltage characteristics of this graph according to NMC characteristics graph which becomes linear when a single battery cell has voltage between 3.75 - 3.55 V. (with multiple cell will be at 26.25 - 24.85 V) 
 
-.. image:: ./images/37.png
+.. image:: ./images/36.png
     :width: 480
     :align: center
 
@@ -55,7 +55,7 @@ From calculation, we know total load when robot operate at standby load. So we d
 
 **Result**
 
-.. image:: ./images/38.png
+.. image:: ./images/37.png
     :width: 480
     :align: center
 
@@ -63,7 +63,7 @@ From calculation, we know total load when robot operate at standby load. So we d
 
 - In case of battery voltage, the robot operates at standby mode. In 4 hours, battery decrease about 0.51 V. by voltage characteristics of this graph according to NMC characteristics graph which become linear when single battery cell has voltage between 4.15 - 3.75 V. (with multiple cell will be at 29.2 - 26.25 V) 
 
-.. image:: ./images/39.png
+.. image:: ./images/38.png
     :width: 480
     :align: center
 
@@ -71,7 +71,7 @@ From calculation, we know total load when robot operate at standby load. So we d
 
 - In the case of robots, they operate in standby mode. Robots will drain current between 3.6 - 4 A. because some devices drain current unsteady such as Intel NUC. So the average current in this experiment is 3.77 A. 
 
-.. image:: ./images/40.png
+.. image:: ./images/39.png
     :width: 480
     :align: center
 

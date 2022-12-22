@@ -12,8 +12,8 @@ Due to high current at the battery. To make current sensors by sensor we must me
 
 When we get a sensor value the voltage is between 0 - 75 mV which is a very small range. If we want to input this value into the ADC of the microcontroller, we need to gain this voltage by op-amp in non-inverting amplifier mode. (gain voltage to 0- 3.3V for STM32h745 ADC)
 
-.. image:: ./images/11.png
-    :width: 480
+.. image:: ./images/13.png
+    :width: 360
     :align: center
 
 |
@@ -46,8 +46,8 @@ And Vmin is calculated by :
 
     V_{min} = \frac{V_{in} \times R_{2}}{R_{1}-R_{2}} = \frac{20 \times 1235.955}{10000 + 1235.955} = 2.2V
 
-.. image:: ./images/12.png
-    :width: 480
+.. image:: ./images/14.png
+    :width: 360
     :align: center
 
 |
@@ -64,8 +64,8 @@ If the battery voltage is 20-30 V. when voltage passes this circuit. It will dec
     R_{1} &= R_{2} \\
     R_{3} &= R_{4}
 
-.. image:: ./images/13.png
-    :width: 480
+.. image:: ./images/15.png
+    :width: 360
     :align: center
 
 |

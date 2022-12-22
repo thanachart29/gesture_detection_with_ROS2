@@ -1,6 +1,6 @@
 .. _mechanicaL_system:
 
-Mechanical System
+Mechanical Design
 #########################
 
 Cacao's 3D model

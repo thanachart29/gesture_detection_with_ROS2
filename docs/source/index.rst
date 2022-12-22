@@ -6,7 +6,7 @@ CACAO'S Robot
 we are cacao's team.
 
 .. toctree::
-   :caption: CACAO'S Robot application
+   :caption: CACAO Robot's Subsystems
    :maxdepth: 1
    :hidden:
 
@@ -19,7 +19,7 @@ we are cacao's team.
    
 
 .. toctree::
-   :caption: CACAO'S System integration
+   :caption: CACAO Robot System Integration
    :maxdepth: 1
    :hidden:
 

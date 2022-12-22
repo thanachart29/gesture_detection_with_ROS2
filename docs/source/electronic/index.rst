@@ -1,7 +1,7 @@
 .. _electronic_system:
 
-Electronic System
-######################
+Electrical System Design
+#########################
 
 Requirement
 ******************

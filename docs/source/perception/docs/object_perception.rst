@@ -337,11 +337,13 @@ You can try to use it with the following steps
 
         ros2 run object_detection object_detection_node.py
 
+
 4. Open a new terminal and run the Estimate coordinate node.
 
 	.. code-block:: bash
         
         ros2 run object_detection estimate_coordinate_rs2.py
+
 
 5. Open a new terminal and call a service to start detecting objects.
 
@@ -497,7 +499,7 @@ Problem and future plan
 
     We can switch to model YOLOv7 because YOLOv7 has better object detection performance. and in use can apply knowledge from using YOLOv5.
 
-    There is an YOLOv5 official link here: https://github.com/WongKinYiu/yolov7
+    There is an YOLOv7 official link here: https://github.com/WongKinYiu/yolov7
 
 4. Color Clustering
    

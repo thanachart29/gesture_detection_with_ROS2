@@ -342,7 +342,7 @@ You can try to use it with the following steps
 
     .. code-block:: bash
 
-        ros2 run object_detection object_detection_node.py
+        ros2 run object_detection estimate_coordinate_rs2.py
 
 
 5. Open a new terminal and call a service to start detecting objects.

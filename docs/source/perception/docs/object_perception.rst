@@ -340,9 +340,9 @@ You can try to use it with the following steps
 
 4. Open a new terminal and run the Estimate coordinate node.
 
-	.. code-block:: bash
-        
-        ros2 run object_detection estimate_coordinate_rs2.py
+    .. code-block:: bash
+
+        ros2 run object_detection object_detection_node.py
 
 
 5. Open a new terminal and call a service to start detecting objects.
@@ -497,7 +497,7 @@ Problem and future plan
 
 3. YOLOv7
 
-    We can switch to model YOLOv7 because YOLOv7 has better object detection performance. and in use can apply knowledge from using YOLOv5.
+    We can switch to model YOLOv7 because YOLOv7 has better object detection performance. and in use can apply knowledge from using YOLOv7.
 
     There is an YOLOv7 official link here: https://github.com/WongKinYiu/yolov7
 
